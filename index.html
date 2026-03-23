@@ -6,18 +6,16 @@
     <title>Ghelfi | Specialità Fermentata Superiore</title>
     
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    <meta name="description" content="Ghelfi: Kombucha e fermentati Metodo Classico prodotti a Mantova. Facit in Mantua.">
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --ghelfi-blue: #5B7D8E;
             --ghelfi-red: #C1444E;
             --ghelfi-black: #1a1a1a;
-            --ghelfi-green: #3E5B44;
             --ghelfi-gold: #D4AF37;
             --ghelfi-cream: #F5F5DC;
         }
@@ -25,86 +23,92 @@
         body { font-family: 'Montserrat', sans-serif; background-color: var(--ghelfi-cream); color: var(--ghelfi-black); }
         .serif { font-family: 'Playfair Display', serif; }
 
-        /* NAVBAR CUSTOM */
-        .navbar {
-            background-color: rgba(245, 245, 220, 0.95) !important; /* Crema con trasparenza */
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-        }
-
-        .navbar-brand img { height: 50px; transition: 0.3s; }
+        /* NAVBAR: Hamburger solo su Mobile, Estesa su Desktop */
+        .navbar { background: rgba(245, 245, 220, 0.9); backdrop-filter: blur(10px); padding: 1rem 0; }
+        .navbar-brand img { height: 60px; }
         
         .nav-link {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             font-weight: 600;
             color: var(--ghelfi-black) !important;
-            margin: 0 10px;
+            transition: 0.3s;
         }
-
         .nav-link:hover { color: var(--ghelfi-gold) !important; }
 
-        /* Hamburger Icon Custom */
-        .navbar-toggler { border: none; color: var(--ghelfi-gold); }
-        .navbar-toggler:focus { shadow: none; outline: none; }
+        /* HERO SECTION */
+        .hero-header { padding: 140px 0 60px; }
+        .facit-badge-top { height: 80px; margin-bottom: 2rem; opacity: 0.8; }
 
-        /* HERO & SPACING */
-        .hero-header { padding: 120px 0 80px 0; }
-
-        /* CARD SYSTEM */
-        .product-grid { display: flex; flex-wrap: wrap; }
+        /* PRODUCT CARDS: L'effetto Etichetta */
+        .product-grid { display: flex; flex-wrap: wrap; margin: 0; }
         
         .product-card {
             position: relative;
-            height: 70vh;
-            min-height: 500px;
+            height: 75vh;
             width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             overflow: hidden;
-            color: white;
             text-decoration: none;
+            transition: 0.5s ease-in-out;
         }
 
-        .pattern-overlay {
+        /* Il Pattern dell'etichetta in background */
+        .pattern-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.12;
             background-repeat: repeat;
-            background-size: 180px;
+            background-size: 250px;
+            opacity: 0.05; /* Quasi invisibile di base */
+            transition: all 0.8s ease;
             z-index: 1;
         }
 
-        .card-kombucha { background-color: var(--ghelfi-blue); }
+        /* Colori e Pattern specifici */
+        .card-classica { background-color: var(--ghelfi-blue); }
+        .card-classica .pattern-bg { background-image: url('assets/sfondo-kombucha.svg'); }
+        
         .card-special { background-color: var(--ghelfi-black); }
+        .card-special .pattern-bg { background-image: url('assets/sfondo-kombucha.svg'); } /* Stesso pattern della classica */
+        
         .card-mate { background-color: var(--ghelfi-red); }
-        .card-aceto { background-color: var(--ghelfi-green); }
+        .card-mate .pattern-bg { background-image: url('assets/sfondo-mate.svg'); }
 
-        .card-kombucha .pattern-overlay, .card-special .pattern-overlay { background-image: url('sfondo-kombucha.svg'); }
-        .card-mate .pattern-overlay { background-image: url('sfondo-mate.svg'); }
+        .card-aceto { background-color: #3E5B44; }
+
+        /* Effetto Hover (Desktop) e Focus (Mobile) */
+        .product-card:hover .pattern-bg {
+            opacity: 0.25;
+            transform: scale(1.1);
+        }
+
+        .card-content { z-index: 2; text-align: center; color: white; transition: 0.4s; }
+        .product-card:hover .card-content { transform: translateY(-10px); }
 
         .btn-ghelfi {
-            border: 1px solid white;
-            color: white;
-            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--ghelfi-gold);
+            color: var(--ghelfi-gold);
+            background: transparent;
+            border-radius: 0;
             padding: 10px 30px;
-            text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.75rem;
-            z-index: 2;
+            text-transform: uppercase;
+            font-size: 0.7rem;
         }
+        .product-card:hover .btn-ghelfi { background: var(--ghelfi-gold); color: white; }
 
-        @media (min-width: 992px) {
-            .product-card { width: 25%; height: 100vh; }
-        }
+        @media (min-width: 992px) { .product-card { width: 25%; height: 100vh; } }
 
-        footer { background: #000; color: #fff; padding: 80px 0; }
-        .footer-logo { max-width: 100px; filter: brightness(0) invert(1); opacity: 0.8; }
+        /* FOOTER MIGLIORATO */
+        footer { background: #111; color: var(--ghelfi-cream); padding: 80px 0 40px; }
+        .footer-logo-mantua { height: 120px; filter: sepia(1) saturate(5) hue-rotate(10deg); margin-bottom: 2rem; }
+        .footer-divider { width: 50px; height: 1px; background: var(--ghelfi-gold); margin: 2rem auto; }
+        .partner-link { color: #555; text-decoration: none; font-size: 0.7rem; transition: 0.3s; }
+        .partner-link:hover { color: var(--ghelfi-gold); }
     </style>
 </head>
 <body>
@@ -112,17 +116,17 @@
     <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="#home">
-                <img src="logo.svg" alt="Ghelfi Logo">
+                <img src="assets/logo.svg" alt="Ghelfi Logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa-solid fa-bars-staggered fa-lg"></i>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto text-center">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#kombucha">Kombucha</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#mate">Yerba Mate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#aceto">Aceto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prodotti">Kombucha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prodotti">Yerba Mate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#prodotti">Aceto</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contatti">Contatti</a></li>
                 </ul>
             </div>
@@ -130,89 +134,84 @@
     </nav>
 
     <header id="home" class="hero-header text-center container">
-        <h1 class="display-4 fw-bold mb-2">GHELFI</h1>
-        <p class="serif italic h4 mb-4" style="color: var(--ghelfi-gold);">Specialità Fermentata Superiore</p>
+        <img src="assets/facit-in-mantua.svg" class="facit-badge-top" alt="Facit in Mantua">
+        <h1 class="display-3 fw-bold mb-2">GHELFI</h1>
+        <p class="serif italic h3 mb-4" style="color: var(--ghelfi-gold);">Specialità Fermentata Superiore</p>
         <div class="row justify-content-center">
-            <div class="col-md-7">
-                <p class="lead fw-light italic">"Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco."</p>
-                <div class="mt-4">
-                    <img src="facit-in-mantua.svg" style="height: 60px; opacity: 0.6;" alt="Facit in Mantua">
-                </div>
+            <div class="col-md-8">
+                <p class="lead fw-light">"Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco."</p>
             </div>
         </div>
     </header>
 
-    <section class="product-grid">
-        <a href="classica.html" id="kombucha" class="product-card card-kombucha">
-            <div class="pattern-overlay"></div>
-            <div class="card-content" style="z-index: 2;">
+    <section id="prodotti" class="product-grid">
+        <a href="classica.html" class="product-card card-classica">
+            <div class="pattern-bg"></div>
+            <div class="card-content">
                 <h2 class="display-6 fw-bold">KOMBUCHA</h2>
-                <p class="serif italic mb-4">Metodo Classico</p>
-                <span class="btn btn-ghelfi">Esplora</span>
+                <p class="serif italic mb-4 text-uppercase small">Classica</p>
+                <div class="btn btn-ghelfi">Scopri</div>
             </div>
         </a>
 
         <a href="special.html" class="product-card card-special">
-            <div class="pattern-overlay"></div>
-            <div class="card-content" style="z-index: 2;">
+            <div class="pattern-bg"></div>
+            <div class="card-content">
                 <h2 class="display-6 fw-bold" style="color: var(--ghelfi-gold);">SPECIAL</h2>
-                <p class="serif italic mb-4">Strong Profile</p>
-                <span class="btn btn-ghelfi">Esplora</span>
+                <p class="serif italic mb-4 text-uppercase small">Strong Profile</p>
+                <div class="btn btn-ghelfi">Scopri</div>
             </div>
         </a>
 
-        <a href="mate.html" id="mate" class="product-card card-mate">
-            <div class="pattern-overlay"></div>
-            <div class="card-content" style="z-index: 2;">
+        <a href="mate.html" class="product-card card-mate">
+            <div class="pattern-bg"></div>
+            <div class="card-content">
                 <h2 class="display-6 fw-bold">YERBA MATE</h2>
-                <p class="serif italic mb-4">Energia Ka’a</p>
-                <span class="btn btn-ghelfi">Esplora</span>
+                <p class="serif italic mb-4 text-uppercase small">Energia Ka’a</p>
+                <div class="btn btn-ghelfi">Scopri</div>
             </div>
         </a>
 
-        <a href="#" id="aceto" class="product-card card-aceto">
-            <div class="card-content" style="z-index: 2;">
+        <a href="#" class="product-card card-aceto">
+            <div class="pattern-bg"></div>
+            <div class="card-content">
                 <h2 class="display-6 fw-bold">ACETO</h2>
-                <p class="serif italic mb-4 text-white-50">Coming Soon</p>
-                <span class="btn btn-ghelfi opacity-50">Dettagli</span>
+                <p class="serif italic mb-4 text-uppercase small">Coming Soon</p>
+                <div class="btn btn-ghelfi border-light text-light opacity-50">Dettagli</div>
             </div>
         </a>
     </section>
 
     <footer id="contatti" class="text-center">
         <div class="container">
-            <img src="facit-in-mantua.svg" alt="Facit in Mantua" class="footer-logo mb-4">
-            <h3 class="serif italic mb-4">Facit in Mantua</h3>
+            <img src="assets/facit-in-mantua.svg" class="footer-logo-mantua" alt="Facit in Mantua">
+            <h2 class="serif italic">Facit in Mantua</h2>
+            <div class="footer-divider"></div>
             
             <div class="mb-5">
-                <p class="mb-1 fw-bold">Ghelfi Fermenta</p>
+                <p class="small tracking-widest text-uppercase mb-1">Ghelfi Fermenta</p>
                 <p class="small text-muted">Mantova, Italia</p>
-                <a href="mailto:info@ghelfifermenta.it" class="text-white text-decoration-none">info@ghelfifermenta.it</a>
+                <div class="d-flex justify-content-center gap-4 mt-3">
+                    <a href="#" class="text-white"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:info@ghelfifermenta.it" class="text-white"><i class="fa-solid fa-envelope"></i></a>
+                </div>
             </div>
 
-            <p class="small mb-2">
-                Copyright <span id="year-range">2025-2026</span> Ghelfi Fermenta.
+            <p class="small mb-2" style="opacity: 0.5;">
+                © Copyright <span id="year-range">2025-2026</span> Ghelfi Fermenta
             </p>
-            <p class="small text-muted mb-0">Partner Web: grafichello.it</p>
+            <a href="https://grafichello.it" class="partner-link">Progetto Web: grafichello.it</a>
         </div>
     </footer>
 
     <script>
-        // Gestione Anno
+        // Update Copyright Year
         const currentYear = new Date().getFullYear();
         if (currentYear > 2026) {
             document.getElementById('year-range').textContent = `2025-${currentYear}`;
         }
-
-        // Chiude il menu mobile dopo il click su una voce
-        const navLinks = document.querySelectorAll('.nav-link');
-        const menuToggle = document.getElementById('navbarNav');
-        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
-        navLinks.forEach((l) => {
-            l.addEventListener('click', () => { if(window.innerWidth < 992) { bsCollapse.toggle() } })
-        });
     </script>
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
