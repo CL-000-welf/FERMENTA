@@ -3,178 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghelfi | Specialità Fermentata Superiore</title>
     
-    <title>Ghelfi | Specialità Fermentata Superiore - Facit in Mantua</title>
-    <meta name="description" content="Ghelfi produce Kombucha Metodo Classico a Mantova. Naturale, non filtrata, ricca di probiotici. Trama tannica setosa e verve citrica.">
-    <link rel="canonical" href="https://ghelfifermenta.it/">
-
-    <meta property="og:title" content="Ghelfi | Fermentazioni Superiori">
-    <meta property="og:description" content="Specialità fermentata superiore prodotta secondo il Metodo Classico. Facit in Mantua.">
-    <meta property="og:image" content="https://ghelfifermenta.it/assets/og-image.jpg">
-    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <meta name="description" content="Ghelfi: Kombucha e fermentati Metodo Classico prodotti a Mantova. Facit in Mantua.">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --ghelfi-blue: #5B7D8E;
             --ghelfi-red: #C1444E;
-            --ghelfi-black: #2D2D2D;
+            --ghelfi-black: #1a1a1a;
+            --ghelfi-green: #3E5B44;
             --ghelfi-gold: #D4AF37;
             --ghelfi-cream: #F5F5DC;
         }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--ghelfi-cream);
-            color: var(--ghelfi-black);
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--ghelfi-cream); color: var(--ghelfi-black); }
+        .serif { font-family: 'Playfair Display', serif; }
+
+        /* NAVBAR CUSTOM */
+        .navbar {
+            background-color: rgba(245, 245, 220, 0.95) !important; /* Crema con trasparenza */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
+        .navbar-brand img { height: 50px; transition: 0.3s; }
+        
+        .nav-link {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--ghelfi-black) !important;
+            margin: 0 10px;
         }
 
-        /* Hero personalizzata */
-        .hero-section {
-            background-color: var(--ghelfi-blue);
-            color: var(--ghelfi-cream);
-            padding: 100px 0;
-            border-bottom: 5px solid var(--ghelfi-gold);
-        }
+        .nav-link:hover { color: var(--ghelfi-gold) !important; }
 
-        .logo-img {
-            max-width: 180px;
-            filter: drop-shadow(0px 4px 10px rgba(0,0,0,0.3));
-        }
+        /* Hamburger Icon Custom */
+        .navbar-toggler { border: none; color: var(--ghelfi-gold); }
+        .navbar-toggler:focus { shadow: none; outline: none; }
 
-        /* Card Prodotti Custom */
+        /* HERO & SPACING */
+        .hero-header { padding: 120px 0 80px 0; }
+
+        /* CARD SYSTEM */
+        .product-grid { display: flex; flex-wrap: wrap; }
+        
         .product-card {
-            transition: all 0.4s ease;
-            border: none;
-            border-radius: 0;
-            color: white;
-            min-height: 400px;
+            position: relative;
+            height: 70vh;
+            min-height: 500px;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            overflow: hidden;
+            color: white;
+            text-decoration: none;
         }
 
-        .product-card:hover {
-            transform: scale(1.02);
-            z-index: 10;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        .pattern-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.12;
+            background-repeat: repeat;
+            background-size: 180px;
+            z-index: 1;
         }
+
+        .card-kombucha { background-color: var(--ghelfi-blue); }
+        .card-special { background-color: var(--ghelfi-black); }
+        .card-mate { background-color: var(--ghelfi-red); }
+        .card-aceto { background-color: var(--ghelfi-green); }
+
+        .card-kombucha .pattern-overlay, .card-special .pattern-overlay { background-image: url('sfondo-kombucha.svg'); }
+        .card-mate .pattern-overlay { background-image: url('sfondo-mate.svg'); }
 
         .btn-ghelfi {
-            border: 1px solid var(--ghelfi-gold);
-            color: var(--ghelfi-gold);
-            background: transparent;
-            border-radius: 0;
+            border: 1px solid white;
+            color: white;
+            background: rgba(255,255,255,0.1);
+            padding: 10px 30px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: 0.3s;
+            font-size: 0.75rem;
+            z-index: 2;
         }
 
-        .btn-ghelfi:hover {
-            background: var(--ghelfi-gold);
-            color: white;
+        @media (min-width: 992px) {
+            .product-card { width: 25%; height: 100vh; }
         }
 
-        /* Badge Facit in Mantua */
-        .badge-mantua {
-            width: 80px;
-            margin-bottom: 20px;
-        }
+        footer { background: #000; color: #fff; padding: 80px 0; }
+        .footer-logo { max-width: 100px; filter: brightness(0) invert(1); opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <header class="hero-section text-center">
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
         <div class="container">
-            <img src="facit-in-mantua.png" alt="Ghelfi Mantua" class="logo-img mb-4">
-            <h1 class="display-3 fw-bold mb-2">GHELFI</h1>
-            <p class="h4 serif italic text-uppercase tracking-widest mb-4" style="color: var(--ghelfi-gold);">Specialità Fermentata Superiore</p>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <p class="lead">"Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco."</p>
+            <a class="navbar-brand" href="#home">
+                <img src="logo.svg" alt="Ghelfi Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars-staggered fa-lg"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kombucha">Kombucha</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#mate">Yerba Mate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#aceto">Aceto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contatti">Contatti</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="home" class="hero-header text-center container">
+        <h1 class="display-4 fw-bold mb-2">GHELFI</h1>
+        <p class="serif italic h4 mb-4" style="color: var(--ghelfi-gold);">Specialità Fermentata Superiore</p>
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <p class="lead fw-light italic">"Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco."</p>
+                <div class="mt-4">
+                    <img src="facit-in-mantua.svg" style="height: 60px; opacity: 0.6;" alt="Facit in Mantua">
                 </div>
             </div>
         </div>
     </header>
 
-    <section class="container-fluid p-0">
-        <div class="row g-0">
-            <div class="col-md-6 col-lg-3 product-card text-center" style="background-color: var(--ghelfi-blue);">
-                <h2 class="display-6">Kombucha</h2>
-                <p class="serif italic">Hóngchá Jūn</p>
-                <div class="mt-4">
-                    <a href="classica.html" class="btn btn-ghelfi text-white">Scopri</a>
-                </div>
+    <section class="product-grid">
+        <a href="classica.html" id="kombucha" class="product-card card-kombucha">
+            <div class="pattern-overlay"></div>
+            <div class="card-content" style="z-index: 2;">
+                <h2 class="display-6 fw-bold">KOMBUCHA</h2>
+                <p class="serif italic mb-4">Metodo Classico</p>
+                <span class="btn btn-ghelfi">Esplora</span>
             </div>
+        </a>
 
-            <div class="col-md-6 col-lg-3 product-card text-center" style="background-color: var(--ghelfi-red);">
-                <h2 class="display-6">Yerba Mate</h2>
-                <p class="serif italic">Ka’a</p>
-                <div class="mt-4">
-                    <a href="mate.html" class="btn btn-outline-light rounded-0">Esplora</a>
-                </div>
+        <a href="special.html" class="product-card card-special">
+            <div class="pattern-overlay"></div>
+            <div class="card-content" style="z-index: 2;">
+                <h2 class="display-6 fw-bold" style="color: var(--ghelfi-gold);">SPECIAL</h2>
+                <p class="serif italic mb-4">Strong Profile</p>
+                <span class="btn btn-ghelfi">Esplora</span>
             </div>
+        </a>
 
-            <div class="col-md-6 col-lg-3 product-card text-center" style="background-color: var(--ghelfi-black);">
-                <h2 class="display-6 text-gold" style="color:var(--ghelfi-gold)">Special</h2>
-                <p class="serif italic">Strong Profile</p>
-                <div class="mt-4">
-                    <a href="strong.html" class="btn btn-ghelfi">Dettagli</a>
-                </div>
+        <a href="mate.html" id="mate" class="product-card card-mate">
+            <div class="pattern-overlay"></div>
+            <div class="card-content" style="z-index: 2;">
+                <h2 class="display-6 fw-bold">YERBA MATE</h2>
+                <p class="serif italic mb-4">Energia Ka’a</p>
+                <span class="btn btn-ghelfi">Esplora</span>
             </div>
+        </a>
 
-            <div class="col-md-6 col-lg-3 product-card text-center" style="background-color: #3E5B44;">
-                <h2 class="display-6 text-muted">Aceto</h2>
-                <p class="serif italic">Prossimamente</p>
-                <div class="mt-4 opacity-50">
-                    <i class="fa-solid fa-hourglass-start fa-2xl"></i>
-                </div>
+        <a href="#" id="aceto" class="product-card card-aceto">
+            <div class="card-content" style="z-index: 2;">
+                <h2 class="display-6 fw-bold">ACETO</h2>
+                <p class="serif italic mb-4 text-white-50">Coming Soon</p>
+                <span class="btn btn-ghelfi opacity-50">Dettagli</span>
             </div>
-        </div>
+        </a>
     </section>
 
-    <section class="py-5 text-center bg-white">
+    <footer id="contatti" class="text-center">
         <div class="container">
-            <div class="row">
-                <div class="col-6 col-md-3 mb-4">
-                    <i class="fa-solid fa-seedling fa-2xl mb-3 text-success"></i>
-                    <p class="fw-bold">100% Vegan</p>
-                </div>
-                <div class="col-6 col-md-3 mb-4">
-                    <i class="fa-solid fa-wheat-awn-slash fa-2xl mb-3 text-warning"></i>
-                    <p class="fw-bold">Gluten Free</p>
-                </div>
-                <div class="col-6 col-md-3 mb-4">
-                    <i class="fa-solid fa-flask-vial fa-2xl mb-3 text-primary"></i>
-                    <p class="fw-bold">Senza Solfiti</p>
-                </div>
-                <div class="col-6 col-md-3 mb-4">
-                    <i class="fa-solid fa-droplet fa-2xl mb-3 text-danger"></i>
-                    <p class="fw-bold">Non Filtrato</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-dark text-white py-5">
-        <div class="container text-center">
-            <p class="mb-1">ESTED 2025</p>
+            <img src="facit-in-mantua.svg" alt="Facit in Mantua" class="footer-logo mb-4">
             <h3 class="serif italic mb-4">Facit in Mantua</h3>
-            <div class="d-flex justify-content-center gap-4 mb-4">
-                <a href="#" class="text-white"><i class="fa-brands fa-instagram fa-xl"></i></a>
-                <a href="#" class="text-white"><i class="fa-brands fa-facebook fa-xl"></i></a>
-                <a href="https://wa.me/tuonumero" class="text-white"><i class="fa-brands fa-whatsapp fa-xl"></i></a>
+            
+            <div class="mb-5">
+                <p class="mb-1 fw-bold">Ghelfi Fermenta</p>
+                <p class="small text-muted">Mantova, Italia</p>
+                <a href="mailto:info@ghelfifermenta.it" class="text-white text-decoration-none">info@ghelfifermenta.it</a>
             </div>
-            <p class="small text-muted">© 2026 Ghelfi Fermenta. Tutti i diritti riservati.</p>
+
+            <p class="small mb-2">
+                Copyright <span id="year-range">2025-2026</span> Ghelfi Fermenta.
+            </p>
+            <p class="small text-muted mb-0">Partner Web: grafichello.it</p>
         </div>
     </footer>
+
+    <script>
+        // Gestione Anno
+        const currentYear = new Date().getFullYear();
+        if (currentYear > 2026) {
+            document.getElementById('year-range').textContent = `2025-${currentYear}`;
+        }
+
+        // Chiude il menu mobile dopo il click su una voce
+        const navLinks = document.querySelectorAll('.nav-link');
+        const menuToggle = document.getElementById('navbarNav');
+        const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle:false});
+        navLinks.forEach((l) => {
+            l.addEventListener('click', () => { if(window.innerWidth < 992) { bsCollapse.toggle() } })
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
