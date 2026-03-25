@@ -18,7 +18,6 @@
             --ghelfi-red: #C1444E;
             --ghelfi-black: #1a1a1a;
             --ghelfi-green: #3E5B44;
-            /* Nuovo Oro Richiesto */
             --ghelfi-gold: #e1cf92; 
             --ghelfi-cream: #F5F5DC;
             --font-futura: 'Futura PT', 'Futura', sans-serif;
@@ -29,14 +28,15 @@
         .serif { font-family: 'EB Garamond', serif; }
         .futura { font-family: var(--font-futura); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* NAVBAR & STELLA HAMBURGER */
+        /* NAVBAR & STELLA HAMBURGER CENTRATO */
         .navbar { z-index: 1050; padding: 2rem 0; background: transparent !important; }
         .hamburger { 
-            cursor: pointer; border: none; background: none; z-index: 1100; position: fixed; right: 2rem; top: 2rem;
-            width: 50px; height: 50px; transition: 0.3s; padding: 0;
+            cursor: pointer; border: none; background: none; z-index: 1100;
+            width: 60px; height: 60px; transition: 0.3s; padding: 0;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
         }
         .hamburger img { width: 100%; height: 100%; filter: none; }
-        .hamburger:hover { transform: scale(1.1) rotate(15deg); }
+        .hamburger:hover { transform: translate(-50%, -50%) scale(1.1) rotate(15deg); }
 
         .fs-menu {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -45,27 +45,40 @@
         }
         .fs-menu a {
             font-family: 'EB Garamond', serif; font-size: clamp(2rem, 8vw, 4rem); 
-            text-decoration: none; color: var(--ghelfi-black); margin: 0.5rem 0;
+            text-decoration: none; color: var(--ghelfi-gold); margin: 0.5rem 0;
             transition: 0.3s; letter-spacing: 4px; font-weight: 700;
         }
-        .fs-menu a:hover { color: var(--ghelfi-gold); }
+        
+        /* Hover con i colori delle sezioni */
+        .fs-menu a:nth-child(2):hover { color: var(--ghelfi-blue); } /* Kombucha */
+        .fs-menu a:nth-child(3):hover { color: var(--ghelfi-red); } /* Yerba Mate */
+        .fs-menu a:nth-child(4):hover { color: var(--ghelfi-green); } /* Aceto */
+        .fs-menu a:nth-child(1):hover,
+        .fs-menu a:nth-child(5):hover { color: var(--ghelfi-black); } /* Home, Contatti */
 
         /* HERO SECTION */
-        .hero-header { padding: 120px 0 60px; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero-header { padding: 120px 0 60px; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
         .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; margin-bottom: 20px; color: var(--ghelfi-gold); }
         .logo-scudetto { height: clamp(200px, 35vh, 350px); margin-bottom: 30px; }
 
         /* SEZIONE INTEGRITÀ - SFONDO BIANCO */
-        .integrita-section { background-color: #ffffff; padding: 80px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-        .integrita-text { text-align: center; max-width: 800px; margin: 0 auto; }
-        .integrita-text h5 { color: var(--ghelfi-gold); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; }
+        .integrita-section { background-color: #ffffff; padding: 80px 0; border-top: 1px solid var(--ghelfi-gold); border-bottom: 1px solid var(--ghelfi-gold); }
+        .integrita-text { text-align: center; max-width: 800px; margin: 0 auto 50px auto; }
+        .integrita-text h5 { color: var(--ghelfi-gold); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'EB Garamond', serif; }
         .integrita-text p { font-size: 1.1rem; font-style: italic; color: #444; }
 
-        /* BADGES */
-        .etichetta-badges { padding: 40px 0 80px; background: transparent; }
-        .badge-item { text-align: center; padding: 20px; }
+        /* BADGES NELLA SEZIONE INTEGRITÀ */
+        .etichetta-badges { padding: 0; background: transparent; }
+        .badge-item { text-align: center; padding: 20px; position: relative; }
         .badge-item i { font-size: 2.5rem; color: var(--ghelfi-gold); margin-bottom: 15px; display: block; }
         .badge-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; color: #444; }
+        
+        /* Linee separatore dorate tra i badges */
+        @media (min-width: 768px) {
+            .badge-item:not(:last-child)::after {
+                content: ''; position: absolute; top: 20%; right: 0; width: 1px; height: 60%; background-color: var(--ghelfi-gold);
+            }
+        }
 
         /* GRID PRODOTTI */
         .product-grid { display: flex; flex-wrap: wrap; margin: 0; }
@@ -87,34 +100,34 @@
 
         /* BOTTONE TAPPO A CORONA DINAMICO */
         .btn-tappo {
-            width: 130px; height: 130px;
+            width: 140px; height: 140px;
             background: transparent;
             border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
             position: relative;
-            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             text-transform: uppercase;
             font-family: var(--font-futura);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             letter-spacing: 2px;
             color: var(--ghelfi-gold);
-            /* Rotazione continua base */
-            animation: rotateSlow 10s linear infinite;
+            /* Rotazione continua base e oscillazione */
+            animation: rotateSlow 15s linear infinite, oscillate 3s ease-in-out infinite;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Effetto Corona (bordi a zig-zag simulati con pseudo-elementi) */
+        /* Effetto Corona (bordi a zig-zag simulati) */
         .btn-tappo::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 50%;
-            border: 10px dotted var(--ghelfi-gold);
+            border: 12px dotted var(--ghelfi-gold);
             transition: 0.5s;
         }
 
         /* Hover & Scroll Detection */
         .product-card:hover .btn-tappo {
             background: var(--ghelfi-gold);
-            transform: scale(1.1) rotate(45deg);
+            transform: scale(1.05);
             animation-play-state: paused;
         }
         
@@ -125,9 +138,21 @@
         .card-mate:hover .btn-tappo span { color: var(--ghelfi-red); }
         .card-aceto:hover .btn-tappo span { color: var(--ghelfi-green); }
 
+        /* Effetto click "apertura" */
+        .btn-tappo:active {
+            transform: scale(0.95) rotate(15deg);
+            transition: 0.1s;
+        }
+        
+        /* Animazioni */
         @keyframes rotateSlow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
+        }
+        @keyframes oscillate {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(10deg); }
+            75% { transform: rotate(-10deg); }
         }
 
         @media (min-width: 992px) { .product-card { width: 25%; height: 100vh; } }
@@ -144,7 +169,7 @@
 <body>
 
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <img src="stella.svg" alt="Menu" id="menuIcon">
+        <img src="assets/stella.svg" alt="Menu" id="menuIcon">
     </button>
 
     <div class="fs-menu" id="fsMenu">
@@ -160,32 +185,30 @@
         <img src="assets/logo.svg" class="logo-scudetto" alt="Ghelfi Scudetto">
         <p class="serif italic h4" style="color: var(--ghelfi-gold); letter-spacing: 6px; text-transform: uppercase;">Specialità Fermentata Superiore</p>
         <div class="mt-4 col-md-7 mx-auto">
-            <p class="lead fw-light">"Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco."</p>
+            <p class="lead fw-light">Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco.</p>
         </div>
     </header>
 
     <section class="integrita-section">
         <div class="container integrita-text">
-            <h5 class="futura">INTEGRITÀ E NATURA</h5>
+            <h5>INTEGRITÀ E NATURA</h5>
             <p>Prodotto non filtrato: l’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.</p>
         </div>
-    </section>
-
-    <section class="etichetta-badges container-fluid">
-        <div class="container">
-            <div class="row g-4 justify-content-center">
-                <div class="col-6 col-md-2 badge-item">
+        
+        <div class="container etichetta-badges">
+            <div class="row g-0 justify-content-center">
+                <div class="col-6 col-md-3 badge-item">
                     <i class="fa-solid fa-seedling"></i>
                     <span>100% Vegan</span>
                 </div>
-                <div class="col-6 col-md-2 badge-item">
+                <div class="col-6 col-md-3 badge-item">
                     <i class="fa-solid fa-wheat-awn"></i> <span>Gluten Free</span>
                 </div>
-                <div class="col-6 col-md-2 badge-item">
+                <div class="col-6 col-md-3 badge-item">
                     <i class="fa-solid fa-flask-vial"></i>
                     <span>Senza Solfiti</span>
                 </div>
-                <div class="col-6 col-md-2 badge-item">
+                <div class="col-6 col-md-3 badge-item">
                     <i class="fa-solid fa-droplet-slash"></i>
                     <span>Non Filtrato</span>
                 </div>
@@ -196,7 +219,7 @@
     <section id="prodotti" class="product-grid">
         <a href="classica.html" class="product-card card-classica">
             <div class="card-content">
-                <img src="stella.svg" class="stella-titolo" alt="stella">
+                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
                 <h2>ORIGINE</h2>
                 <div class="subtitle">KOMBUCHA</div>
                 <div class="btn-tappo"><span>STAPPA</span></div>
@@ -205,7 +228,7 @@
         </a>
         <a href="special.html" class="product-card card-special">
             <div class="card-content">
-                <img src="stella.svg" class="stella-titolo" alt="stella">
+                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
                 <h2>PROFONDO</h2>
                 <div class="subtitle">KOMBUCHA</div>
                 <div class="btn-tappo"><span>STAPPA</span></div>
@@ -214,7 +237,7 @@
         </a>
         <a href="mate.html" class="product-card card-mate">
             <div class="card-content">
-                <img src="stella.svg" class="stella-titolo" alt="stella">
+                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
                 <h2>MATE</h2>
                 <div class="subtitle">KOMBUCHA</div>
                 <div class="btn-tappo"><span>STAPPA</span></div>
@@ -223,7 +246,7 @@
         </a>
         <a href="aceto.html" class="product-card card-aceto">
             <div class="card-content">
-                <img src="stella.svg" class="stella-titolo" alt="stella">
+                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
                 <h2>ELISIR</h2>
                 <div class="subtitle">ACETO DI KOMBUCHA</div>
                 <div class="btn-tappo"><span>SVITA</span></div>
@@ -264,16 +287,6 @@
                 document.body.style.overflow = 'hidden';
             }
         }
-
-        // Animazione extra per mobile allo scroll: i bottoni ruotano più velocemente mentre si scende
-        window.addEventListener('scroll', () => {
-            const tappi = document.querySelectorAll('.btn-tappo');
-            const scrollPos = window.scrollY / 5;
-            tappi.forEach(tappo => {
-                // Applica una rotazione supplementare basata sullo scroll per rendere vivo il movimento
-                tappo.style.transform = `rotate(${scrollPos}deg)`;
-            });
-        });
 
         const currentYear = new Date().getFullYear();
         if (currentYear > 2026) {
