@@ -174,14 +174,21 @@
     </footer>
 
     <div class="footer-bottom">
-        © 2025 GHELFI FERMENTA - TUTTI I DIRITTI RISERVATI - PARTNER WEB: GRAFICHELLO.IT
-    </div>
-
+            <div class="container">
+                <p class="mb-1">© Copyright <span id="year-range">2025-2026</span> Ghelfi Fermenta</p>
+                <a href="https://grafichello.it" style="color: #444; text-decoration: none;">Partner web: grafichello.it</a>
+            </div>
+        </div>
+    
     <script>
         function toggleMenu() {
             const m = document.getElementById('fsMenu');
             m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
             document.body.style.overflow = (m.style.display === 'flex') ? 'hidden' : 'auto';
+        }
+        const currentYear = new Date().getFullYear();
+        if (currentYear > 2026) {
+            document.getElementById('year-range').textContent = `2025-${currentYear}`;
         }
     </script>
 </body>
