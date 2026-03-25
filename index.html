@@ -6,7 +6,6 @@
     <title>Ghelfi | Specialità Fermentata Superiore</title>
     
     <link rel="icon" type="image/png" href="assets/favicon.png">
-    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
@@ -14,35 +13,25 @@
 
     <style>
         :root {
-            --ghelfi-blue: #5B7D8E;
-            --ghelfi-red: #C1444E;
-            --ghelfi-black: #1a1a1a;
-            --ghelfi-green: #3E5B44;
-            --ghelfi-gold: #e1cf92; 
-            --ghelfi-cream: #F5F5DC;
-            --font-futura: 'Futura PT', 'Futura', sans-serif;
+            --ghelfi-blue: #5B7D8E; --ghelfi-red: #C1444E; --ghelfi-black: #1a1a1a;
+            --ghelfi-green: #3E5B44; --ghelfi-gold: #e1cf92; --ghelfi-cream: #F5F5DC;
         }
 
         .font-marion { font-family: 'EB Garamond', serif; text-transform: uppercase; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--ghelfi-cream); color: var(--ghelfi-black); overflow-x: hidden; }
-        .serif { font-family: 'EB Garamond', serif; }
-        .futura { font-family: var(--font-futura); text-transform: uppercase; letter-spacing: 2px; }
-
-        /* HEADER E STELLA MENU */
-        .hero-header { padding: 60px 0; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        
+        /* HEADER */
+        .hero-header { padding: 60px 0; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
         
         .menu-trigger {
-            width: 70px; height: 70px;
-            cursor: pointer;
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 30px;
-            z-index: 10;
+            width: 110px; height: 110px; /* Stella più grande */
+            cursor: pointer; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 20px; z-index: 10;
         }
-        .menu-trigger:hover { transform: scale(1.1) rotate(180deg); }
+        .menu-trigger:hover { transform: scale(1.1) rotate(144deg); }
 
         .logo-link { text-decoration: none; display: block; }
-        .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; margin-bottom: 30px; color: var(--ghelfi-gold); transition: 0.3s; }
-        .logo-link:hover .logo-text { opacity: 0.8; }
+        .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; color: var(--ghelfi-gold); margin-bottom: 20px; }
 
         /* MENU POPUP */
         .fs-menu {
@@ -50,113 +39,85 @@
             background: var(--ghelfi-cream); z-index: 2000;
             display: none; flex-direction: column; justify-content: center; align-items: center;
         }
-        
-        .menu-exit-star {
-            position: absolute; top: 60px; width: 70px; height: 70px;
-            cursor: pointer; transition: 0.6s ease;
-        }
-        .menu-exit-star:hover { transform: rotate(-180deg) scale(1.1); }
+        .menu-exit-star { position: absolute; top: 60px; width: 80px; cursor: pointer; transition: 0.6s ease; }
+        .menu-exit-star:hover { transform: rotate(-180deg); }
+        .fs-menu a { font-family: 'EB Garamond', serif; font-size: clamp(2rem, 6vw, 3.5rem); text-decoration: none; color: var(--ghelfi-gold); margin: 0.3rem 0; transition: 0.3s; font-weight: 700; letter-spacing: 3px; }
+        .fs-menu a:hover { color: var(--ghelfi-black); }
 
-        .fs-menu a {
-            font-family: 'EB Garamond', serif; font-size: clamp(2rem, 8vw, 3.5rem); 
-            text-decoration: none; color: var(--ghelfi-gold); margin: 0.4rem 0;
-            transition: 0.3s; letter-spacing: 4px; font-weight: 700;
-        }
-        
-        /* Hover Colori Sezioni */
-        .fs-menu a.h-home:hover { color: var(--ghelfi-black); }
-        .fs-menu a.h-origine:hover { color: var(--ghelfi-blue); }
-        .fs-menu a.h-profondo:hover { color: var(--ghelfi-black); }
-        .fs-menu a.h-mate:hover { color: var(--ghelfi-red); }
-        .fs-menu a.h-elisir:hover { color: var(--ghelfi-green); }
-        .fs-menu a.h-contatti:hover { color: var(--ghelfi-black); }
-
-        /* SEZIONE INTEGRITÀ BIANCA */
+        /* SEZIONE INTEGRITÀ */
         .integrita-section { background-color: #ffffff; padding: 80px 0; border-top: 1px solid var(--ghelfi-gold); border-bottom: 1px solid var(--ghelfi-gold); }
-        .integrita-text { text-align: center; max-width: 800px; margin: 0 auto 50px auto; }
-        .integrita-text h5 { color: var(--ghelfi-gold); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'EB Garamond', serif; }
-        .integrita-text p { font-size: 1.1rem; font-style: italic; color: #444; }
-
+        .integrita-text h5 { color: var(--ghelfi-gold); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; }
         .badge-item { text-align: center; padding: 20px; position: relative; }
-        .badge-item i { font-size: 2.5rem; color: var(--ghelfi-gold); margin-bottom: 15px; display: block; }
-        .badge-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; color: #444; }
-        
-        @media (min-width: 768px) {
-            .badge-item:not(:last-child)::after {
-                content: ''; position: absolute; top: 20%; right: 0; width: 1px; height: 60%; background-color: var(--ghelfi-gold);
-            }
-        }
+        .badge-item i { font-size: 2.2rem; color: var(--ghelfi-gold); margin-bottom: 15px; display: block; }
+        @media (min-width: 768px) { .badge-item:not(:last-child)::after { content: ''; position: absolute; top: 20%; right: 0; width: 1px; height: 60%; background-color: var(--ghelfi-gold); } }
 
-        /* GRID PRODOTTI E TAPPI CORONA */
+        /* PRODOTTI GRID */
         .product-grid { display: flex; flex-wrap: wrap; margin: 0; }
         .product-card {
             position: relative; height: 85vh; width: 100%;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-decoration: none; transition: 0.4s ease; border: none; overflow: hidden;
+            text-decoration: none; overflow: hidden; text-align: center;
         }
-        .card-classica { background-color: var(--ghelfi-blue); }
-        .card-special { background-color: var(--ghelfi-black); }
-        .card-mate { background-color: var(--ghelfi-red); }
-        .card-aceto { background-color: var(--ghelfi-green); }
+        .card-content { z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
+        .stella-titolo { width: 30px; margin-bottom: 10px; }
+        .product-card h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: 4px; color: var(--ghelfi-gold); margin: 0; }
+        .subtitle { font-family: 'Futura PT', sans-serif; font-size: 1rem; color: white; margin-bottom: 30px; letter-spacing: 2px; }
 
-        .card-content { text-align: center; color: white; z-index: 2; width: 100%; padding: 0 20px;}
-        .card-content .stella-titolo { width: 30px; margin-bottom: 15px; }
-        .card-content h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: 4px; color: var(--ghelfi-gold); margin-bottom: 5px; }
-        .card-content .subtitle { font-family: var(--font-futura); font-size: 1.2rem; font-weight: 400; color: white; margin-bottom: 25px; }
-        .card-content .evocative { font-size: 0.85rem; margin-top: 15px; opacity: 0.9; font-style: italic; letter-spacing: 1px; }
-
-        /* TAPPO ARTIGIANALE */
-        .btn-tappo {
-            width: 140px; height: 140px;
-            background: transparent; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            position: relative; cursor: pointer;
-            font-family: var(--font-futura); font-size: 0.9rem; letter-spacing: 2px; color: var(--ghelfi-gold);
-            animation: artisanOscillate 5s ease-in-out infinite;
-            transition: 0.5s;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.3);
+        /* BOTTONI ARTIGIANALI */
+        .btn-ghelfi {
+            width: 140px; height: 140px; display: flex; justify-content: center; align-items: center;
+            position: relative; cursor: pointer; transition: 0.5s;
+            animation: artisanMove 4s ease-in-out infinite;
         }
-
-        .btn-tappo::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 50%; border: 12px solid var(--ghelfi-gold);
-            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 0 L58 15 L75 10 L70 28 L88 28 L80 45 L95 50 L80 55 L88 72 L70 72 L75 90 L58 85 L50 100 L42 85 L25 90 L30 72 L12 72 L20 55 L5 50 L20 45 L12 28 L30 28 L25 10 L42 15 Z" fill="black"/></svg>');
-            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 0 L58 15 L75 10 L70 28 L88 28 L80 45 L95 50 L80 55 L88 72 L70 72 L75 90 L58 85 L50 100 L42 85 L25 90 L30 72 L12 72 L20 55 L5 50 L20 45 L12 28 L30 28 L25 10 L42 15 Z" fill="black"/></svg>');
-            -webkit-mask-size: cover; mask-size: cover;
+        .btn-ghelfi span { font-family: 'Futura PT', sans-serif; font-size: 0.8rem; letter-spacing: 2px; color: var(--ghelfi-gold); z-index: 3; }
+        
+        /* Tappo Corona (SVG Mask per effetto frastagliato come corona.png) */
+        .btn-corona {
+            border: 2px solid var(--ghelfi-gold); border-radius: 50%;
+            box-shadow: 0 0 0 4px transparent, inset 0 0 0 2px transparent;
         }
+        /* Effetto Hover Pieno */
+        .product-card:hover .btn-corona { background-color: var(--ghelfi-gold); }
+        .card-classica:hover .btn-corona span { color: var(--ghelfi-blue); }
+        .card-special:hover .btn-corona span { color: var(--ghelfi-black); }
+        .card-mate:hover .btn-corona span { color: var(--ghelfi-red); }
 
-        .product-card:hover .btn-tappo { background: var(--ghelfi-gold); transform: scale(1.05); }
-        .card-classica:hover .btn-tappo span { color: var(--ghelfi-blue); }
-        .card-special:hover .btn-tappo span { color: var(--ghelfi-black); }
-        .card-mate:hover .btn-tappo span { color: var(--ghelfi-red); }
-        .card-aceto:hover .btn-tappo span { color: var(--ghelfi-green); }
+        /* Tappo a Vite (Elisir) */
+        .btn-vite {
+            width: 80px; height: 130px;
+            border: 2px solid var(--ghelfi-gold);
+            border-radius: 5px 5px 2px 2px;
+            background: transparent;
+        }
+        .product-card:hover .btn-vite { background-color: var(--ghelfi-gold); }
+        .card-aceto:hover .btn-vite span { color: var(--ghelfi-green); }
 
-        .btn-tappo:active { transform: scale(0.95) rotate(20deg); }
-
-        @keyframes artisanOscillate {
+        @keyframes artisanMove {
             0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(8deg); }
+            50% { transform: rotate(5deg); }
         }
 
-        @media (min-width: 992px) { .product-card { width: 25%; height: 100vh; } }
+        .evocative { font-size: 0.8rem; color: white; margin-top: 20px; font-style: italic; opacity: 0.8; }
 
         /* FOOTER */
-        .footer-top { background-color: var(--ghelfi-cream); padding: 80px 0; text-align: center; }
-        .footer-logo-mantua { height: 100px; margin-bottom: 2rem; }
-        .social-links a { color: var(--ghelfi-gold); font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
-        .footer-bottom { background-color: var(--ghelfi-black); color: #666; padding: 40px 0; text-align: center; font-size: 0.8rem; }
+        .footer-top { padding: 60px 0; text-align: center; background-color: var(--ghelfi-cream); }
+        .social-links { margin-top: 15px; }
+        .social-links a { color: var(--ghelfi-black); font-size: 1.2rem; margin: 0 10px; transition: 0.3s; }
+        .social-links a:hover { color: var(--ghelfi-gold); }
+
+        @media (min-width: 992px) { .product-card { width: 25%; height: 100vh; } }
     </style>
 </head>
 <body>
 
     <div class="fs-menu" id="fsMenu">
         <img src="assets/stella.svg" class="menu-exit-star" onclick="toggleMenu()" alt="Esci">
-        <a href="index.html" class="h-home">HOME</a>
-        <a href="#prodotti" class="h-origine" onclick="toggleMenu()">ORIGINE</a>
-        <a href="#prodotti" class="h-profondo" onclick="toggleMenu()">PROFONDO</a>
-        <a href="#prodotti" class="h-mate" onclick="toggleMenu()">MATE</a>
-        <a href="#prodotti" class="h-elisir" onclick="toggleMenu()">ELISIR</a>
-        <a href="#contatti" class="h-contatti" onclick="toggleMenu()">CONTATTI</a>
+        <a href="index.html">HOME</a>
+        <a href="#prodotti" onclick="toggleMenu()">ORIGINE</a>
+        <a href="#prodotti" onclick="toggleMenu()">PROFONDO</a>
+        <a href="#prodotti" onclick="toggleMenu()">MATE</a>
+        <a href="#prodotti" onclick="toggleMenu()">ELISIR</a>
+        <a href="#contatti" onclick="toggleMenu()">CONTATTI</a>
     </div>
 
     <header id="home" class="hero-header container">
@@ -171,102 +132,71 @@
     </header>
 
     <section class="integrita-section">
-        <div class="container integrita-text">
+        <div class="container text-center">
             <h5 class="font-marion">INTEGRITÀ E NATURA</h5>
-            <p>Prodotto non filtrato: l’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.</p>
-        </div>
-        
-        <div class="container etichetta-badges">
+            <p class="mb-5 italic">Prodotto non filtrato: l’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.</p>
             <div class="row g-0 justify-content-center">
-                <div class="col-6 col-md-3 badge-item">
-                    <i class="fa-solid fa-seedling"></i>
-                    <span>100% Vegan</span>
-                </div>
-                <div class="col-6 col-md-3 badge-item">
-                    <i class="fa-solid fa-wheat-awn"></i> <span>Gluten Free</span>
-                </div>
-                <div class="col-6 col-md-3 badge-item">
-                    <i class="fa-solid fa-flask-vial"></i>
-                    <span>Senza Solfiti</span>
-                </div>
-                <div class="col-6 col-md-3 badge-item">
-                    <i class="fa-solid fa-droplet-slash"></i>
-                    <span>Non Filtrato</span>
-                </div>
+                <div class="col-6 col-md-3 badge-item"><i class="fa-solid fa-seedling"></i><span>100% Vegan</span></div>
+                <div class="col-6 col-md-3 badge-item"><i class="fa-solid fa-wheat-awn"></i><span>Gluten Free</span></div>
+                <div class="col-6 col-md-3 badge-item"><i class="fa-solid fa-flask-vial"></i><span>Senza Solfiti</span></div>
+                <div class="col-6 col-md-3 badge-item"><i class="fa-solid fa-droplet-slash"></i><span>Non Filtrato</span></div>
             </div>
         </div>
     </section>
 
     <section id="prodotti" class="product-grid">
-        <a href="classica.html" class="product-card card-classica">
+        <a href="classica.html" class="product-card card-classica" style="background-color: var(--ghelfi-blue);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
-                <h2>ORIGINE</h2>
-                <div class="subtitle">KOMBUCHA</div>
-                <div class="btn-tappo"><span>STAPPA</span></div>
+                <img src="assets/stella.svg" class="stella-titolo" alt="*">
+                <h2>ORIGINE</h2><div class="subtitle">KOMBUCHA</div>
+                <div class="btn-ghelfi btn-corona"><span>STAPPA</span></div>
                 <div class="evocative">Il punto di partenza.</div>
             </div>
         </a>
-        <a href="special.html" class="product-card card-special">
+        <a href="special.html" class="product-card card-special" style="background-color: var(--ghelfi-black);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
-                <h2>PROFONDO</h2>
-                <div class="subtitle">KOMBUCHA</div>
-                <div class="btn-tappo"><span>STAPPA</span></div>
+                <img src="assets/stella.svg" class="stella-titolo" alt="*">
+                <h2>PROFONDO</h2><div class="subtitle">KOMBUCHA</div>
+                <div class="btn-ghelfi btn-corona"><span>STAPPA</span></div>
                 <div class="evocative">Più lento. Più denso.</div>
             </div>
         </a>
-        <a href="mate.html" class="product-card card-mate">
+        <a href="mate.html" class="product-card card-mate" style="background-color: var(--ghelfi-red);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
-                <h2>MATE</h2>
-                <div class="subtitle">KOMBUCHA</div>
-                <div class="btn-tappo"><span>STAPPA</span></div>
+                <img src="assets/stella.svg" class="stella-titolo" alt="*">
+                <h2>MATE</h2><div class="subtitle">KOMBUCHA</div>
+                <div class="btn-ghelfi btn-corona"><span>STAPPA</span></div>
                 <div class="evocative">Verde. Amaro. Vivo.</div>
             </div>
         </a>
-        <a href="aceto.html" class="product-card card-aceto">
+        <a href="aceto.html" class="product-card card-aceto" style="background-color: var(--ghelfi-green);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="stella">
-                <h2>ELISIR</h2>
-                <div class="subtitle">ACETO DI KOMBUCHA</div>
-                <div class="btn-tappo"><span>SVITA</span></div>
+                <img src="assets/stella.svg" class="stella-titolo" alt="*">
+                <h2>ELISIR</h2><div class="subtitle">ACETO DI KOMBUCHA</div>
+                <div class="btn-ghelfi btn-vite"><span>SVITA</span></div>
                 <div class="evocative">Tempo, trasformazione.</div>
             </div>
         </a>
     </section>
 
-    <footer id="contatti">
-        <div class="footer-top">
-            <div class="container">
-                <div class="social-links">
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                </div>
-                <img src="assets/facit-in-mantua.png" class="footer-logo-mantua" alt="Facit in Mantua">
-                <h2 class="serif italic mb-4">Facit in Mantua</h2>
-                <p class="futura fw-bold mb-1" style="color: var(--ghelfi-gold)">Ghelfi Fermenta</p>
-                <p class="text-muted">Mantova, Italia | info@ghelfifermenta.it</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <p class="mb-1">© Copyright <span id="year-range">2025-2026</span> Ghelfi Fermenta</p>
-                <a href="https://grafichello.it" style="color: #444; text-decoration: none;">Progetto: grafichello.it</a>
+    <footer id="contatti" class="footer-top">
+        <div class="container">
+            <h2 class="font-marion italic mb-4">Facit in Mantua</h2>
+            <p class="mb-0 fw-bold" style="color: var(--ghelfi-gold)">GHELFI FERMENTA</p>
+            <p class="text-muted small">Mantova, Italia | <a href="mailto:info@ghelfifermenta.it" class="text-muted">info@ghelfifermenta.it</a></p>
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
         function toggleMenu() {
-            const menu = document.getElementById('fsMenu');
-            if (menu.style.display === 'flex') {
-                menu.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            } else {
-                menu.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            }
+            const m = document.getElementById('fsMenu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+            document.body.style.overflow = (m.style.display === 'flex') ? 'hidden' : 'auto';
         }
     </script>
 </body>
