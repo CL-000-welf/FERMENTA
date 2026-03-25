@@ -8,8 +8,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/futura-pt" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -17,21 +16,17 @@
             --ghelfi-green: #3E5B44; --ghelfi-gold: #e1cf92; --ghelfi-cream: #F5F5DC;
         }
 
-        .font-marion { font-family: 'EB Garamond', serif; text-transform: uppercase; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--ghelfi-cream); color: var(--ghelfi-black); overflow-x: hidden; }
-        
-        /* HEADER */
-        .hero-header { padding: 60px 0; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        
-        .menu-trigger {
-            width: 110px; height: 110px; /* Stella più grande */
-            cursor: pointer; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-bottom: 20px; z-index: 10;
-        }
-        .menu-trigger:hover { transform: scale(1.1) rotate(144deg); }
+        .marion { font-family: 'EB Garamond', serif; text-transform: uppercase; }
+        .serif-italic { font-family: 'EB Garamond', serif; font-style: italic; }
 
-        .logo-link { text-decoration: none; display: block; }
-        .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; color: var(--ghelfi-gold); margin-bottom: 20px; }
+        /* HEADER */
+        .hero-header { padding: 40px 20px; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .menu-trigger { width: 120px; cursor: pointer; transition: 0.5s; margin-bottom: 25px; }
+        .menu-trigger:hover { transform: scale(1.1) rotate(15deg); }
+        .logo-text { font-size: clamp(3.5rem, 12vw, 9rem); letter-spacing: 15px; color: var(--ghelfi-gold); line-height: 0.9; text-decoration: none; }
+        
+        .hero-desc { max-width: 700px; margin: 30px auto; padding: 0 25px; font-weight: 300; line-height: 1.6; }
 
         /* MENU POPUP */
         .fs-menu {
@@ -39,103 +34,89 @@
             background: var(--ghelfi-cream); z-index: 2000;
             display: none; flex-direction: column; justify-content: center; align-items: center;
         }
-        .menu-exit-star { position: absolute; top: 60px; width: 80px; cursor: pointer; transition: 0.6s ease; }
-        .menu-exit-star:hover { transform: rotate(-180deg); }
-        .fs-menu a { font-family: 'EB Garamond', serif; font-size: clamp(2rem, 6vw, 3.5rem); text-decoration: none; color: var(--ghelfi-gold); margin: 0.3rem 0; transition: 0.3s; font-weight: 700; letter-spacing: 3px; }
-        .fs-menu a:hover { color: var(--ghelfi-black); }
+        .menu-exit { position: absolute; top: 40px; width: 80px; cursor: pointer; transition: 0.6s; }
+        .fs-menu a { font-family: 'EB Garamond', serif; font-size: clamp(2rem, 8vw, 4rem); text-decoration: none; color: var(--ghelfi-gold); margin: 10px 0; font-weight: 700; transition: 0.3s; }
+        
+        /* Hover colori sezioni */
+        .link-home:hover, .link-contatti:hover { color: var(--ghelfi-black); }
+        .link-origine:hover { color: var(--ghelfi-blue); }
+        .link-profondo:hover { color: var(--ghelfi-black); }
+        .link-mate:hover { color: var(--ghelfi-red); }
+        .link-elisir:hover { color: var(--ghelfi-green); }
 
-        /* SEZIONE INTEGRITÀ */
-        .integrita-section { background-color: #ffffff; padding: 80px 0; border-top: 1px solid var(--ghelfi-gold); border-bottom: 1px solid var(--ghelfi-gold); }
-        .integrita-text h5 { color: var(--ghelfi-gold); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; }
-        .badge-item { text-align: center; padding: 20px; position: relative; }
-        .badge-item i { font-size: 2.2rem; color: var(--ghelfi-gold); margin-bottom: 15px; display: block; }
-        @media (min-width: 768px) { .badge-item:not(:last-child)::after { content: ''; position: absolute; top: 20%; right: 0; width: 1px; height: 60%; background-color: var(--ghelfi-gold); } }
+        /* INTEGRITÀ E NATURA */
+        .integrita-section { background: #fff; padding: 100px 20px; border-top: 1px solid var(--ghelfi-gold); border-bottom: 1px solid var(--ghelfi-gold); text-align: center; }
+        .integrita-section h5 { color: var(--ghelfi-gold); font-size: 1.8rem; letter-spacing: 5px; margin-bottom: 30px; }
+        .badge-item { padding: 30px; position: relative; }
+        .badge-item i { font-size: 2.5rem; color: var(--ghelfi-gold); display: block; margin-bottom: 15px; }
+        .badge-item span { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: #666; }
+        @media (min-width: 768px) { .badge-item:not(:last-child)::after { content: ''; position: absolute; top: 25%; right: 0; width: 1px; height: 50%; background: var(--ghelfi-gold); } }
 
-        /* PRODOTTI GRID */
-        .product-grid { display: flex; flex-wrap: wrap; margin: 0; }
-        .product-card {
-            position: relative; height: 85vh; width: 100%;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-decoration: none; overflow: hidden; text-align: center;
-        }
-        .card-content { z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
-        .stella-titolo { width: 30px; margin-bottom: 10px; }
-        .product-card h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: 4px; color: var(--ghelfi-gold); margin: 0; }
-        .subtitle { font-family: 'Futura PT', sans-serif; font-size: 1rem; color: white; margin-bottom: 30px; letter-spacing: 2px; }
+        /* GRID PRODOTTI */
+        .product-grid { display: flex; flex-wrap: wrap; }
+        .product-card { width: 100%; height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-decoration: none; position: relative; transition: 0.5s; }
+        .card-content { z-index: 5; text-align: center; width: 100%; }
+        .card-content h2 { color: var(--ghelfi-gold); font-size: 3rem; margin-bottom: 5px; letter-spacing: 5px; }
+        .product-card .subtitle { color: #fff; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 40px; }
 
         /* BOTTONI ARTIGIANALI */
-        .btn-ghelfi {
-            width: 140px; height: 140px; display: flex; justify-content: center; align-items: center;
-            position: relative; cursor: pointer; transition: 0.5s;
-            animation: artisanMove 4s ease-in-out infinite;
+        .btn-custom {
+            width: 160px; height: 160px; border: 2px solid var(--ghelfi-gold); border-radius: 50%;
+            display: flex; justify-content: center; align-items: center; position: relative;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .btn-ghelfi span { font-family: 'Futura PT', sans-serif; font-size: 0.8rem; letter-spacing: 2px; color: var(--ghelfi-gold); z-index: 3; }
+        .btn-custom span { color: var(--ghelfi-gold); font-size: 1.1rem; letter-spacing: 2px; transition: 0.3s; }
         
-        /* Tappo Corona (SVG Mask per effetto frastagliato come corona.png) */
-        .btn-corona {
-            border: 2px solid var(--ghelfi-gold); border-radius: 50%;
-            box-shadow: 0 0 0 4px transparent, inset 0 0 0 2px transparent;
-        }
-        /* Effetto Hover Pieno */
-        .product-card:hover .btn-corona { background-color: var(--ghelfi-gold); }
-        .card-classica:hover .btn-corona span { color: var(--ghelfi-blue); }
-        .card-special:hover .btn-corona span { color: var(--ghelfi-black); }
-        .card-mate:hover .btn-corona span { color: var(--ghelfi-red); }
+        /* Specifico per Tappo a Vite */
+        .btn-vite { border-radius: 10px 10px 0 0; width: 100px; height: 140px; }
 
-        /* Tappo a Vite (Elisir) */
-        .btn-vite {
-            width: 80px; height: 130px;
-            border: 2px solid var(--ghelfi-gold);
-            border-radius: 5px 5px 2px 2px;
-            background: transparent;
-        }
-        .product-card:hover .btn-vite { background-color: var(--ghelfi-gold); }
-        .card-aceto:hover .btn-vite span { color: var(--ghelfi-green); }
-
-        @keyframes artisanMove {
-            0%, 100% { transform: rotate(0deg); }
-            50% { transform: rotate(5deg); }
-        }
-
-        .evocative { font-size: 0.8rem; color: white; margin-top: 20px; font-style: italic; opacity: 0.8; }
-
-        /* FOOTER */
-        .footer-top { padding: 60px 0; text-align: center; background-color: var(--ghelfi-cream); }
-        .social-links { margin-top: 15px; }
-        .social-links a { color: var(--ghelfi-black); font-size: 1.2rem; margin: 0 10px; transition: 0.3s; }
-        .social-links a:hover { color: var(--ghelfi-gold); }
+        /* Hover Bottoni */
+        .product-card:hover .btn-custom { background: var(--ghelfi-gold); }
+        .card-origine:hover .btn-custom span { color: var(--ghelfi-blue); }
+        .card-profondo:hover .btn-custom span { color: var(--ghelfi-black); }
+        .card-mate:hover .btn-custom span { color: var(--ghelfi-red); }
+        .card-elisir:hover .btn-custom span { color: var(--ghelfi-green); }
+        
+        /* Animazione ripetuta gradi */
+        .btn-custom { animation: rotateGentle 4s ease-in-out infinite; }
+        @keyframes rotateGentle { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
 
         @media (min-width: 992px) { .product-card { width: 25%; height: 100vh; } }
+
+        /* FOOTER */
+        .footer-main { padding: 80px 20px; text-align: center; background: var(--ghelfi-cream); }
+        .footer-logo-facit { width: 120px; margin-bottom: 25px; }
+        .social-links { margin-top: 20px; }
+        .social-links a { color: var(--ghelfi-black); font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
+        .social-links a:hover { color: var(--ghelfi-gold); }
+        
+        .footer-bottom { background: #000; color: #555; padding: 30px 20px; font-size: 0.7rem; text-align: center; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
     <div class="fs-menu" id="fsMenu">
-        <img src="assets/stella.svg" class="menu-exit-star" onclick="toggleMenu()" alt="Esci">
-        <a href="index.html">HOME</a>
-        <a href="#prodotti" onclick="toggleMenu()">ORIGINE</a>
-        <a href="#prodotti" onclick="toggleMenu()">PROFONDO</a>
-        <a href="#prodotti" onclick="toggleMenu()">MATE</a>
-        <a href="#prodotti" onclick="toggleMenu()">ELISIR</a>
-        <a href="#contatti" onclick="toggleMenu()">CONTATTI</a>
+        <img src="assets/stella.svg" class="menu-exit" onclick="toggleMenu()" alt="Chiudi">
+        <a href="index.html" class="link-home">HOME</a>
+        <a href="#prodotti" class="link-origine" onclick="toggleMenu()">ORIGINE</a>
+        <a href="#prodotti" class="link-profondo" onclick="toggleMenu()">PROFONDO</a>
+        <a href="#prodotti" class="link-mate" onclick="toggleMenu()">MATE</a>
+        <a href="#prodotti" class="link-elisir" onclick="toggleMenu()">ELISIR</a>
+        <a href="#contatti" class="link-contatti" onclick="toggleMenu()">CONTATTI</a>
     </div>
 
-    <header id="home" class="hero-header container">
+    <header class="hero-header">
         <img src="assets/stella.svg" class="menu-trigger" onclick="toggleMenu()" alt="Menu">
-        <a href="index.html" class="logo-link">
-            <h1 class="logo-text font-marion fw-bold">GHELFI</h1>
-        </a>
-        <p class="serif italic h4" style="color: var(--ghelfi-gold); letter-spacing: 6px; text-transform: uppercase;">Specialità Fermentata Superiore</p>
-        <div class="mt-4 col-md-7 mx-auto">
-            <p class="lead fw-light">Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco.</p>
-        </div>
+        <a href="index.html" class="logo-text marion">GHELFI</a>
+        <p class="serif-italic h4 mt-3" style="color: var(--ghelfi-gold); letter-spacing: 5px; text-transform: uppercase;">Specialità Fermentata Superiore</p>
+        <p class="hero-desc">Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco.</p>
     </header>
 
     <section class="integrita-section">
-        <div class="container text-center">
-            <h5 class="font-marion">INTEGRITÀ E NATURA</h5>
-            <p class="mb-5 italic">Prodotto non filtrato: l’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.</p>
-            <div class="row g-0 justify-content-center">
+        <h5 class="marion">INTEGRITÀ E NATURA</h5>
+        <p class="serif-italic mb-5" style="font-size: 1.2rem;">Prodotto non filtrato: l’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.</p>
+        <div class="container">
+            <div class="row g-0">
                 <div class="col-6 col-md-3 badge-item"><i class="fa-solid fa-seedling"></i><span>100% Vegan</span></div>
                 <div class="col-6 col-md-3 badge-item"><i class="fa-solid fa-wheat-awn"></i><span>Gluten Free</span></div>
                 <div class="col-6 col-md-3 badge-item"><i class="fa-solid fa-flask-vial"></i><span>Senza Solfiti</span></div>
@@ -145,52 +126,59 @@
     </section>
 
     <section id="prodotti" class="product-grid">
-        <a href="classica.html" class="product-card card-classica" style="background-color: var(--ghelfi-blue);">
+        <a href="classica.html" class="product-card card-origine" style="background-color: var(--ghelfi-blue);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="*">
-                <h2>ORIGINE</h2><div class="subtitle">KOMBUCHA</div>
-                <div class="btn-ghelfi btn-corona"><span>STAPPA</span></div>
-                <div class="evocative">Il punto di partenza.</div>
+                <h2 class="marion">ORIGINE</h2>
+                <div class="subtitle">Kombucha</div>
+                <div class="btn-custom">
+                    <span class="marion">STAPPA</span>
+                </div>
             </div>
         </a>
-        <a href="special.html" class="product-card card-special" style="background-color: var(--ghelfi-black);">
+        <a href="special.html" class="product-card card-profondo" style="background-color: var(--ghelfi-black);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="*">
-                <h2>PROFONDO</h2><div class="subtitle">KOMBUCHA</div>
-                <div class="btn-ghelfi btn-corona"><span>STAPPA</span></div>
-                <div class="evocative">Più lento. Più denso.</div>
+                <h2 class="marion">PROFONDO</h2>
+                <div class="subtitle">Kombucha</div>
+                <div class="btn-custom">
+                    <span class="marion">STAPPA</span>
+                </div>
             </div>
         </a>
         <a href="mate.html" class="product-card card-mate" style="background-color: var(--ghelfi-red);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="*">
-                <h2>MATE</h2><div class="subtitle">KOMBUCHA</div>
-                <div class="btn-ghelfi btn-corona"><span>STAPPA</span></div>
-                <div class="evocative">Verde. Amaro. Vivo.</div>
+                <h2 class="marion">MATE</h2>
+                <div class="subtitle">Kombucha</div>
+                <div class="btn-custom">
+                    <span class="marion">STAPPA</span>
+                </div>
             </div>
         </a>
-        <a href="aceto.html" class="product-card card-aceto" style="background-color: var(--ghelfi-green);">
+        <a href="aceto.html" class="product-card card-elisir" style="background-color: var(--ghelfi-green);">
             <div class="card-content">
-                <img src="assets/stella.svg" class="stella-titolo" alt="*">
-                <h2>ELISIR</h2><div class="subtitle">ACETO DI KOMBUCHA</div>
-                <div class="btn-ghelfi btn-vite"><span>SVITA</span></div>
-                <div class="evocative">Tempo, trasformazione.</div>
+                <h2 class="marion">ELISIR</h2>
+                <div class="subtitle">Aceto di Kombucha</div>
+                <div class="btn-custom btn-vite">
+                    <span class="marion">SVITA</span>
+                </div>
             </div>
         </a>
     </section>
 
-    <footer id="contatti" class="footer-top">
-        <div class="container">
-            <h2 class="font-marion italic mb-4">Facit in Mantua</h2>
-            <p class="mb-0 fw-bold" style="color: var(--ghelfi-gold)">GHELFI FERMENTA</p>
-            <p class="text-muted small">Mantova, Italia | <a href="mailto:info@ghelfifermenta.it" class="text-muted">info@ghelfifermenta.it</a></p>
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-            </div>
+    <footer id="contatti" class="footer-main">
+        <img src="assets/logo.svg" class="footer-logo-facit" alt="Facit in Mantua">
+        <h3 class="serif-italic">Facit in Mantua</h3>
+        <p class="marion mt-3" style="color: var(--ghelfi-gold); letter-spacing: 3px;">Ghelfi Fermenta</p>
+        <p class="small text-muted">Mantova, Italia | info@ghelfifermenta.it</p>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
     </footer>
+
+    <div class="footer-bottom">
+        © 2025 GHELFI FERMENTA - TUTTI I DIRITTI RISERVATI - PROGETTO: GRAFICHELLO.IT
+    </div>
 
     <script>
         function toggleMenu() {
