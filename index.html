@@ -9,7 +9,7 @@
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;1,400&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -17,12 +17,15 @@
             --ghelfi-red: #C1444E;
             --ghelfi-black: #1a1a1a;
             --ghelfi-green: #3E5B44;
-            --ghelfi-gold: #D4AF37;
+            /* Oro aggiornato per matchare le etichette */
+            --ghelfi-gold: #c5a365; 
             --ghelfi-cream: #F5F5DC;
         }
 
+        /* Utilizzo Marion/EB Garamond per la scritta GHELFI */
+        .font-marion { font-family: 'EB Garamond', serif; text-transform: uppercase; }
         body { font-family: 'Montserrat', sans-serif; background-color: var(--ghelfi-cream); color: var(--ghelfi-black); overflow-x: hidden; }
-        .serif { font-family: 'Playfair Display', serif; }
+        .serif { font-family: 'EB Garamond', serif; }
 
         /* NAVBAR & FULL-SCREEN MENU */
         .navbar { z-index: 1050; padding: 2rem 0; background: transparent !important; }
@@ -37,24 +40,29 @@
             display: none; flex-direction: column; justify-content: center; align-items: center;
         }
         .fs-menu a {
-            font-family: 'Playfair Display', serif; font-size: clamp(2rem, 8vw, 4rem); 
+            font-family: 'EB Garamond', serif; font-size: clamp(2rem, 8vw, 4rem); 
             text-decoration: none; color: var(--ghelfi-black); margin: 0.5rem 0;
             transition: 0.3s; letter-spacing: 4px; font-weight: 700;
         }
         .fs-menu a:hover { color: var(--ghelfi-gold); }
 
-        /* HERO SECTION */
+        /* HERO SECTION - GHELFI SOPRA LO SCUDETTO */
         .hero-header { padding: 120px 0 60px; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
-        .logo-scudetto { height: clamp(250px, 40vh, 400px); margin-bottom: 0; }
-        .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; margin-top: -20px; }
+        .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; margin-bottom: 20px; color: var(--ghelfi-black); }
+        .logo-scudetto { height: clamp(200px, 35vh, 350px); margin-bottom: 30px; }
 
-        /* BADGES SEZIONI TECNICHE (STILE ETICHETTA) */
-        .etichetta-badges { padding: 60px 0; background: #fff; border-top: 1px solid var(--ghelfi-gold); border-bottom: 1px solid var(--ghelfi-gold); }
+        /* SEZIONE INTEGRITÀ */
+        .integrita-text { padding: 40px 0 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .integrita-text h5 { color: var(--ghelfi-gold); letter-spacing: 3px; font-weight: 700; }
+        .integrita-text p { font-size: 0.9rem; font-style: italic; }
+
+        /* BADGES */
+        .etichetta-badges { padding: 40px 0 80px; background: transparent; }
         .badge-item { text-align: center; padding: 20px; }
         .badge-item i { font-size: 2.5rem; color: var(--ghelfi-gold); margin-bottom: 15px; display: block; }
         .badge-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; color: #444; }
 
-        /* GRID PRODOTTI (COLORI PIENI) */
+        /* GRID PRODOTTI */
         .product-grid { display: flex; flex-wrap: wrap; margin: 0; }
         .product-card {
             position: relative; height: 80vh; width: 100%;
@@ -66,20 +74,48 @@
         .card-mate { background-color: var(--ghelfi-red); }
         .card-aceto { background-color: var(--ghelfi-green); }
 
-        .card-content { text-align: center; color: white; }
+        .card-content { text-align: center; color: white; display: flex; flex-direction: column; align-items: center; }
         .card-content h2 { font-size: 2.5rem; font-weight: 700; letter-spacing: 3px; }
 
-        .btn-ghelfi {
-            border: 1px solid white; color: white; background: transparent; border-radius: 0;
-            padding: 12px 40px; letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px;
+        /* BOTTONE TAPPO A CORONA */
+        .btn-tappo {
+            width: 120px; height: 120px;
+            margin-top: 30px;
+            background: transparent;
+            border: 2px dashed rgba(255,255,255,0.5);
+            border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            position: relative;
+            transition: 0.5s all ease;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: white;
+            box-shadow: 0 0 0 5px transparent;
         }
-        .product-card:hover { opacity: 0.9; }
+
+        /* Effetto hover a corona stilizzato */
+        .btn-tappo::before {
+            content: ''; position: absolute; top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border-radius: 50%;
+            border: 8px dotted white;
+            opacity: 0; transition: 0.5s;
+        }
+
+        .product-card:hover .btn-tappo {
+            background: white; color: var(--ghelfi-black); transform: rotate(15deg);
+        }
+        .product-card:hover .btn-tappo::before { opacity: 0.3; }
 
         @media (min-width: 992px) { .product-card { width: 25%; height: 100vh; } }
 
         /* FOOTER */
-        .footer-top { background-color: var(--ghelfi-cream); padding: 100px 0; text-align: center; }
-        .footer-logo-mantua { height: 120px; margin-bottom: 2rem; }
+        .footer-top { background-color: var(--ghelfi-cream); padding: 80px 0; text-align: center; }
+        .footer-logo-mantua { height: 100px; margin-bottom: 2rem; }
+        .social-links { margin-bottom: 2rem; }
+        .social-links a { color: var(--ghelfi-gold); font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
+        .social-links a:hover { color: var(--ghelfi-black); }
         .footer-bottom { background-color: var(--ghelfi-black); color: #666; padding: 40px 0; text-align: center; font-size: 0.8rem; }
     </style>
 </head>
@@ -98,13 +134,18 @@
     </div>
 
     <header id="home" class="hero-header container">
+        <h1 class="logo-text font-marion fw-bold">GHELFI</h1>
         <img src="assets/logo.svg" class="logo-scudetto" alt="Ghelfi Scudetto">
-        <h1 class="logo-text serif fw-bold mb-4">GHELFI</h1>
         <p class="serif italic h4" style="color: var(--ghelfi-gold); letter-spacing: 6px; text-transform: uppercase;">Specialità Fermentata Superiore</p>
-        <div class="mt-5 col-md-7 mx-auto">
+        <div class="mt-4 col-md-7 mx-auto">
             <p class="lead fw-light">"Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco."</p>
         </div>
     </header>
+
+    <section class="container integrita-text">
+        <h5 class="font-marion">INTEGRITÀ E NATURA</h5>
+        <p>Prodotto non filtrato: l’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.</p>
+    </section>
 
     <section class="etichetta-badges container-fluid">
         <div class="container">
@@ -114,8 +155,7 @@
                     <span>100% Vegan</span>
                 </div>
                 <div class="col-6 col-md-2 badge-item">
-                    <i class="fa-solid fa-bacteria-slash"></i>
-                    <span>Gluten Free</span>
+                    <i class="fa-solid fa-wheat-awn"></i> <span>Gluten Free</span>
                 </div>
                 <div class="col-6 col-md-2 badge-item">
                     <i class="fa-solid fa-flask-vial"></i>
@@ -134,28 +174,28 @@
             <div class="card-content">
                 <h2 class="serif">KOMBUCHA</h2>
                 <p class="text-uppercase small tracking-widest opacity-75">Classica</p>
-                <div class="btn btn-ghelfi">Scopri</div>
+                <div class="btn-tappo">Scopri</div>
             </div>
         </a>
         <a href="special.html" class="product-card card-special">
             <div class="card-content">
                 <h2 class="serif" style="color: var(--ghelfi-gold);">SPECIAL</h2>
                 <p class="text-uppercase small tracking-widest opacity-75">Strong Profile</p>
-                <div class="btn btn-ghelfi">Scopri</div>
+                <div class="btn-tappo">Scopri</div>
             </div>
         </a>
         <a href="mate.html" class="product-card card-mate">
             <div class="card-content">
                 <h2 class="serif">YERBA MATE</h2>
                 <p class="text-uppercase small tracking-widest opacity-75">Ka’a</p>
-                <div class="btn btn-ghelfi">Scopri</div>
+                <div class="btn-tappo">Scopri</div>
             </div>
         </a>
         <a href="aceto.html" class="product-card card-aceto">
             <div class="card-content">
                 <h2 class="serif">ACETO</h2>
                 <p class="text-uppercase small tracking-widest opacity-75">Kombucha Essence</p>
-                <div class="btn btn-ghelfi">Scopri</div>
+                <div class="btn-tappo">Scopri</div>
             </div>
         </a>
     </section>
@@ -163,6 +203,10 @@
     <footer id="contatti">
         <div class="footer-top">
             <div class="container">
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
                 <img src="assets/facit-in-mantua.png" class="footer-logo-mantua" alt="Facit in Mantua">
                 <h2 class="serif italic mb-4">Facit in Mantua</h2>
                 <p class="text-uppercase tracking-widest fw-bold mb-1">Ghelfi Fermenta</p>
