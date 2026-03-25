@@ -28,59 +28,66 @@
         .serif { font-family: 'EB Garamond', serif; }
         .futura { font-family: var(--font-futura); text-transform: uppercase; letter-spacing: 2px; }
 
-        /* NAVBAR & STELLA HAMBURGER CENTRATO */
-        .navbar { z-index: 1050; padding: 2rem 0; background: transparent !important; }
-        .hamburger { 
-            cursor: pointer; border: none; background: none; z-index: 1100;
-            width: 60px; height: 60px; transition: 0.3s; padding: 0;
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        /* HEADER E STELLA MENU */
+        .hero-header { padding: 60px 0; min-height: 85vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
+        
+        .menu-trigger {
+            width: 70px; height: 70px;
+            cursor: pointer;
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 30px;
+            z-index: 10;
         }
-        .hamburger img { width: 100%; height: 100%; filter: none; }
-        .hamburger:hover { transform: translate(-50%, -50%) scale(1.1) rotate(15deg); }
+        .menu-trigger:hover { transform: scale(1.1) rotate(180deg); }
 
+        .logo-link { text-decoration: none; display: block; }
+        .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; margin-bottom: 30px; color: var(--ghelfi-gold); transition: 0.3s; }
+        .logo-link:hover .logo-text { opacity: 0.8; }
+
+        /* MENU POPUP */
         .fs-menu {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--ghelfi-cream); z-index: 1000;
+            background: var(--ghelfi-cream); z-index: 2000;
             display: none; flex-direction: column; justify-content: center; align-items: center;
         }
+        
+        .menu-exit-star {
+            position: absolute; top: 60px; width: 70px; height: 70px;
+            cursor: pointer; transition: 0.6s ease;
+        }
+        .menu-exit-star:hover { transform: rotate(-180deg) scale(1.1); }
+
         .fs-menu a {
-            font-family: 'EB Garamond', serif; font-size: clamp(2rem, 8vw, 4rem); 
-            text-decoration: none; color: var(--ghelfi-gold); margin: 0.5rem 0;
+            font-family: 'EB Garamond', serif; font-size: clamp(2rem, 8vw, 3.5rem); 
+            text-decoration: none; color: var(--ghelfi-gold); margin: 0.4rem 0;
             transition: 0.3s; letter-spacing: 4px; font-weight: 700;
         }
         
-        /* Hover con i colori delle sezioni */
-        .fs-menu a:nth-child(2):hover { color: var(--ghelfi-blue); } /* Kombucha */
-        .fs-menu a:nth-child(3):hover { color: var(--ghelfi-red); } /* Yerba Mate */
-        .fs-menu a:nth-child(4):hover { color: var(--ghelfi-green); } /* Aceto */
-        .fs-menu a:nth-child(1):hover,
-        .fs-menu a:nth-child(5):hover { color: var(--ghelfi-black); } /* Home, Contatti */
+        /* Hover Colori Sezioni */
+        .fs-menu a.h-home:hover { color: var(--ghelfi-black); }
+        .fs-menu a.h-origine:hover { color: var(--ghelfi-blue); }
+        .fs-menu a.h-profondo:hover { color: var(--ghelfi-black); }
+        .fs-menu a.h-mate:hover { color: var(--ghelfi-red); }
+        .fs-menu a.h-elisir:hover { color: var(--ghelfi-green); }
+        .fs-menu a.h-contatti:hover { color: var(--ghelfi-black); }
 
-        /* HERO SECTION */
-        .hero-header { padding: 120px 0 60px; min-height: 90vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; }
-        .logo-text { font-size: clamp(4rem, 15vw, 10rem); letter-spacing: clamp(10px, 3vw, 25px); line-height: 0.8; margin-bottom: 20px; color: var(--ghelfi-gold); }
-        .logo-scudetto { height: clamp(200px, 35vh, 350px); margin-bottom: 30px; }
-
-        /* SEZIONE INTEGRITÀ - SFONDO BIANCO */
+        /* SEZIONE INTEGRITÀ BIANCA */
         .integrita-section { background-color: #ffffff; padding: 80px 0; border-top: 1px solid var(--ghelfi-gold); border-bottom: 1px solid var(--ghelfi-gold); }
         .integrita-text { text-align: center; max-width: 800px; margin: 0 auto 50px auto; }
         .integrita-text h5 { color: var(--ghelfi-gold); letter-spacing: 3px; font-weight: 700; margin-bottom: 1.5rem; font-family: 'EB Garamond', serif; }
         .integrita-text p { font-size: 1.1rem; font-style: italic; color: #444; }
 
-        /* BADGES NELLA SEZIONE INTEGRITÀ */
-        .etichetta-badges { padding: 0; background: transparent; }
         .badge-item { text-align: center; padding: 20px; position: relative; }
         .badge-item i { font-size: 2.5rem; color: var(--ghelfi-gold); margin-bottom: 15px; display: block; }
         .badge-item span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 600; color: #444; }
         
-        /* Linee separatore dorate tra i badges */
         @media (min-width: 768px) {
             .badge-item:not(:last-child)::after {
                 content: ''; position: absolute; top: 20%; right: 0; width: 1px; height: 60%; background-color: var(--ghelfi-gold);
             }
         }
 
-        /* GRID PRODOTTI */
+        /* GRID PRODOTTI E TAPPI CORONA */
         .product-grid { display: flex; flex-wrap: wrap; margin: 0; }
         .product-card {
             position: relative; height: 85vh; width: 100%;
@@ -92,67 +99,43 @@
         .card-mate { background-color: var(--ghelfi-red); }
         .card-aceto { background-color: var(--ghelfi-green); }
 
-        .card-content { text-align: center; color: white; display: flex; flex-direction: column; align-items: center; z-index: 2; width: 100%; padding: 0 20px;}
+        .card-content { text-align: center; color: white; z-index: 2; width: 100%; padding: 0 20px;}
         .card-content .stella-titolo { width: 30px; margin-bottom: 15px; }
         .card-content h2 { font-size: 2.8rem; font-weight: 700; letter-spacing: 4px; color: var(--ghelfi-gold); margin-bottom: 5px; }
         .card-content .subtitle { font-family: var(--font-futura); font-size: 1.2rem; font-weight: 400; color: white; margin-bottom: 25px; }
         .card-content .evocative { font-size: 0.85rem; margin-top: 15px; opacity: 0.9; font-style: italic; letter-spacing: 1px; }
 
-        /* BOTTONE TAPPO A CORONA DINAMICO */
+        /* TAPPO ARTIGIANALE */
         .btn-tappo {
             width: 140px; height: 140px;
-            background: transparent;
-            border-radius: 50%;
+            background: transparent; border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            position: relative;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-family: var(--font-futura);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            color: var(--ghelfi-gold);
-            /* Rotazione continua base e oscillazione */
-            animation: rotateSlow 15s linear infinite, oscillate 3s ease-in-out infinite;
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative; cursor: pointer;
+            font-family: var(--font-futura); font-size: 0.9rem; letter-spacing: 2px; color: var(--ghelfi-gold);
+            animation: artisanOscillate 5s ease-in-out infinite;
+            transition: 0.5s;
+            box-shadow: inset 0 0 15px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* Effetto Corona (bordi a zig-zag simulati) */
         .btn-tappo::before {
             content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            border-radius: 50%;
-            border: 12px dotted var(--ghelfi-gold);
-            transition: 0.5s;
+            border-radius: 50%; border: 12px solid var(--ghelfi-gold);
+            -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 0 L58 15 L75 10 L70 28 L88 28 L80 45 L95 50 L80 55 L88 72 L70 72 L75 90 L58 85 L50 100 L42 85 L25 90 L30 72 L12 72 L20 55 L5 50 L20 45 L12 28 L30 28 L25 10 L42 15 Z" fill="black"/></svg>');
+            mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M50 0 L58 15 L75 10 L70 28 L88 28 L80 45 L95 50 L80 55 L88 72 L70 72 L75 90 L58 85 L50 100 L42 85 L25 90 L30 72 L12 72 L20 55 L5 50 L20 45 L12 28 L30 28 L25 10 L42 15 Z" fill="black"/></svg>');
+            -webkit-mask-size: cover; mask-size: cover;
         }
 
-        /* Hover & Scroll Detection */
-        .product-card:hover .btn-tappo {
-            background: var(--ghelfi-gold);
-            transform: scale(1.05);
-            animation-play-state: paused;
-        }
-        
-        /* Cambio colore scritta al click/hover pieno */
-        .product-card:hover .btn-tappo span { color: inherit; }
+        .product-card:hover .btn-tappo { background: var(--ghelfi-gold); transform: scale(1.05); }
         .card-classica:hover .btn-tappo span { color: var(--ghelfi-blue); }
         .card-special:hover .btn-tappo span { color: var(--ghelfi-black); }
         .card-mate:hover .btn-tappo span { color: var(--ghelfi-red); }
         .card-aceto:hover .btn-tappo span { color: var(--ghelfi-green); }
 
-        /* Effetto click "apertura" */
-        .btn-tappo:active {
-            transform: scale(0.95) rotate(15deg);
-            transition: 0.1s;
-        }
-        
-        /* Animazioni */
-        @keyframes rotateSlow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        @keyframes oscillate {
+        .btn-tappo:active { transform: scale(0.95) rotate(20deg); }
+
+        @keyframes artisanOscillate {
             0%, 100% { transform: rotate(0deg); }
-            25% { transform: rotate(10deg); }
-            75% { transform: rotate(-10deg); }
+            50% { transform: rotate(8deg); }
         }
 
         @media (min-width: 992px) { .product-card { width: 25%; height: 100vh; } }
@@ -160,29 +143,27 @@
         /* FOOTER */
         .footer-top { background-color: var(--ghelfi-cream); padding: 80px 0; text-align: center; }
         .footer-logo-mantua { height: 100px; margin-bottom: 2rem; }
-        .social-links { margin-bottom: 2rem; }
         .social-links a { color: var(--ghelfi-gold); font-size: 1.5rem; margin: 0 15px; transition: 0.3s; }
-        .social-links a:hover { color: var(--ghelfi-black); }
         .footer-bottom { background-color: var(--ghelfi-black); color: #666; padding: 40px 0; text-align: center; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
-        <img src="assets/stella.svg" alt="Menu" id="menuIcon">
-    </button>
-
     <div class="fs-menu" id="fsMenu">
-        <a href="#home" onclick="toggleMenu()">HOME</a>
-        <a href="#prodotti" onclick="toggleMenu()">KOMBUCHA</a>
-        <a href="#prodotti" onclick="toggleMenu()">YERBA MATE</a>
-        <a href="#prodotti" onclick="toggleMenu()">ACETO</a>
-        <a href="#contatti" onclick="toggleMenu()">CONTATTI</a>
+        <img src="assets/stella.svg" class="menu-exit-star" onclick="toggleMenu()" alt="Esci">
+        <a href="index.html" class="h-home">HOME</a>
+        <a href="#prodotti" class="h-origine" onclick="toggleMenu()">ORIGINE</a>
+        <a href="#prodotti" class="h-profondo" onclick="toggleMenu()">PROFONDO</a>
+        <a href="#prodotti" class="h-mate" onclick="toggleMenu()">MATE</a>
+        <a href="#prodotti" class="h-elisir" onclick="toggleMenu()">ELISIR</a>
+        <a href="#contatti" class="h-contatti" onclick="toggleMenu()">CONTATTI</a>
     </div>
 
     <header id="home" class="hero-header container">
-        <h1 class="logo-text font-marion fw-bold">GHELFI</h1>
-        <img src="assets/logo.svg" class="logo-scudetto" alt="Ghelfi Scudetto">
+        <img src="assets/stella.svg" class="menu-trigger" onclick="toggleMenu()" alt="Menu">
+        <a href="index.html" class="logo-link">
+            <h1 class="logo-text font-marion fw-bold">GHELFI</h1>
+        </a>
         <p class="serif italic h4" style="color: var(--ghelfi-gold); letter-spacing: 6px; text-transform: uppercase;">Specialità Fermentata Superiore</p>
         <div class="mt-4 col-md-7 mx-auto">
             <p class="lead fw-light">Trama tannica setosa e vibrante verve citrica. Il lievito firma verticalmente un profilo evoluto, affilato e rigorosamente secco.</p>
@@ -191,7 +172,7 @@
 
     <section class="integrita-section">
         <div class="container integrita-text">
-            <h5>INTEGRITÀ E NATURA</h5>
+            <h5 class="font-marion">INTEGRITÀ E NATURA</h5>
             <p>Prodotto non filtrato: l’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.</p>
         </div>
         
@@ -286,11 +267,6 @@
                 menu.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             }
-        }
-
-        const currentYear = new Date().getFullYear();
-        if (currentYear > 2026) {
-            document.getElementById('year-range').textContent = `2025-${currentYear}`;
         }
     </script>
 </body>
