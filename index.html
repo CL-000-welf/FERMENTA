@@ -429,57 +429,51 @@ a {
 }
 
 /* TAPPO A VITE */
-.btn-vite-svg {
-    width: 112px;
-    height: 150px;
-    overflow: visible;
-    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.10));
+.btn-vite {
+    position: relative;
+    width: 104px;
+    height: 138px;
+    border: 2px solid var(--ghelfi-gold);
+    border-radius: 18px 18px 8px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.35s ease;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.10);
 }
 
-.btn-vite-svg .vite-body {
-    fill: none;
-    stroke: var(--ghelfi-gold);
-    stroke-width: 2;
-    transition: stroke 0.35s ease, fill 0.35s ease;
+.btn-vite::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    right: 12px;
+    height: 18px;
+    border-top: 2px solid var(--ghelfi-gold);
+    border-bottom: 2px solid var(--ghelfi-gold);
+    transition: border-color 0.35s ease;
 }
 
-.btn-vite-svg .vite-top-line {
-    stroke: var(--ghelfi-gold);
-    stroke-width: 2;
-    transition: stroke 0.35s ease;
+.btn-vite span {
+    position: relative;
+    z-index: 2;
+    color: var(--ghelfi-gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    transition: color 0.35s ease;
 }
 
-.btn-vite-svg .vite-text {
-    fill: var(--ghelfi-gold);
-    font-size: 11px;
-    text-anchor: middle;
-    letter-spacing: 1.5px;
-    font-family: 'EB Garamond', serif;
-    transition: fill 0.35s ease;
+.card-elisir:hover .btn-vite {
+    background: var(--ghelfi-gold);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.16);
 }
 
-.btn-vite-svg .vite-shadow {
-    fill: none;
-    stroke: rgba(225, 207, 146, 0.22);
-    stroke-width: 5;
-    transition: stroke 0.35s ease;
+.card-elisir:hover .btn-vite span {
+    color: var(--ghelfi-green);
 }
 
-.card-elisir:hover .btn-vite-svg .vite-shadow {
-    stroke: rgba(225, 207, 146, 0.38);
-}
-
-.card-elisir:hover .btn-vite-svg .vite-body {
-    fill: var(--ghelfi-gold);
-    stroke: var(--ghelfi-gold);
-}
-
-.card-elisir:hover .btn-vite-svg .vite-top-line {
-    stroke: var(--ghelfi-green);
-}
-
-.card-elisir:hover .btn-vite-svg .vite-text {
-    fill: var(--ghelfi-green);
+.card-elisir:hover .btn-vite::before {
+    border-color: var(--ghelfi-green);
 }
 
 /* DESKTOP */
@@ -703,9 +697,8 @@ a {
                 <div class="btn-wrapper">
                     <svg class="btn-corona-svg" viewBox="0 0 100 100" aria-label="Stappa Origine">
                         <g transform="translate(50,50)">
-                            <!-- Lunghezza del dente del tappo a carona -->
-                             <defs>
-                                <rect id="tooth-shape-p" x="-2" y="-48" width="4" height="9" rx="1"></rect>
+                            <defs>
+                                <rect id="tooth-shape-o" x="-2" y="-48" width="4" height="10" rx="1"></rect>
                             </defs>
 
                             <use href="#tooth-shape-o" class="tooth" transform="rotate(0)"></use>
@@ -849,20 +842,9 @@ a {
                 <div class="subtitle">Aceto</div>
 
                 <div class="btn-wrapper">
-                    <svg class="btn-vite-svg" viewBox="0 0 120 160" aria-label="Svita Elisir">
-                        <!-- anello ombra morbido -->
-                        <rect x="23" y="18" width="74" height="114" rx="12" class="vite-shadow"></rect>
-                
-                        <!-- corpo tappo -->
-                        <rect x="20" y="15" width="80" height="120" rx="12" class="vite-body" transform="rotate(-3 60 75)"></rect>
-                
-                        <!-- righe superiori del tappo -->
-                        <line x1="34" y1="38" x2="86" y2="35" class="vite-top-line"></line>
-                        <line x1="34" y1="52" x2="84" y2="49" class="vite-top-line"></line>
-                
-                        <!-- testo -->
-                        <text x="60" y="86" class="vite-text">SVITA</text>
-                    </svg>
+                    <div class="btn-vite">
+                        <span class="marion">SVITA</span>
+                    </div>
                 </div>
 
                 <div class="evocative">Tempo, trasformazione.</div>
@@ -915,3 +897,5 @@ a {
     </script>
 </body>
 </html>
+
+
