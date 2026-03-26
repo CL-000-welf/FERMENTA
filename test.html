@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghelfi | Fermenti vivi da Mantova</title>
+
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ghelfi-blue: #5B7D8E;
+            --ghelfi-red: #C1444E;
+            --ghelfi-black: #1a1a1a;
+            --ghelfi-green: #3E5B44;
+            --ghelfi-gold: #e1cf92;
+            --ghelfi-cream: #F5F5DC;
+            --ghelfi-white: #f8f6ef;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--ghelfi-cream);
+            color: var(--ghelfi-black);
+            overflow-x: hidden;
+        }
+
+        .marion {
+            font-family: 'EB Garamond', serif;
+            text-transform: uppercase;
+        }
+
+        .serif-italic {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+        }
+
+        /* HEADER */
+        .hero-header {
+            padding: 60px 20px 90px;
+            min-height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background:
+                linear-gradient(to bottom, rgba(245,245,220,0.96), rgba(245,245,220,0.98)),
+                radial-gradient(circle at center, rgba(225,207,146,0.10), transparent 60%);
+        }
+
+        .menu-trigger {
+            width: 120px;
+            cursor: pointer;
+            transition: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 25px;
+            z-index: 10;
+        }
+
+        .menu-trigger:hover {
+            transform: scale(1.08) rotate(144deg);
+        }
+
+        .logo-text {
+            font-size: clamp(3.5rem, 12vw, 9rem);
+            letter-spacing: 15px;
+            color: var(--ghelfi-gold);
+            text-decoration: none;
+            display: block;
+            line-height: 0.95;
+        }
+
+        .hero-kicker {
+            color: var(--ghelfi-gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-top: 18px;
+            margin-bottom: 16px;
+        }
+
+        .hero-claim {
+            max-width: 760px;
+            margin: 0 auto 18px;
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(1.7rem, 3vw, 2.7rem);
+            line-height: 1.15;
+            color: var(--ghelfi-black);
+        }
+
+        .hero-desc {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 25px;
+            font-weight: 300;
+            line-height: 1.7;
+            font-size: 1rem;
+            color: rgba(26, 26, 26, 0.86);
+        }
+
+        /* MENU POPUP */
+        .fs-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--ghelfi-cream);
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-exit {
+            position: absolute;
+            top: 40px;
+            width: 80px;
+            cursor: pointer;
+            transition: 0.6s;
+        }
+
+        .menu-exit:hover {
+            transform: rotate(-180deg);
+        }
+
+        .fs-menu a {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(2rem, 8vw, 4rem);
+            text-decoration: none;
+            color: var(--ghelfi-gold);
+            margin: 10px 0;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .link-home:hover,
+        .link-contatti:hover {
+            color: var(--ghelfi-black);
+        }
+
+        .link-origine:hover {
+            color: var(--ghelfi-blue);
+        }
+
+        .link-profondo:hover {
+            color: var(--ghelfi-black);
+        }
+
+        .link-mate:hover {
+            color: var(--ghelfi-red);
+        }
+
+        .link-elisir:hover {
+            color: var(--ghelfi-green);
+        }
+
+        /* INTRO */
+        .intro-section {
+            background: #fff;
+            padding: 90px 20px;
+            border-top: 1px solid rgba(225, 207, 146, 0.5);
+            border-bottom: 1px solid rgba(225, 207, 146, 0.5);
+            text-align: center;
+        }
+
+        .intro-section h5 {
+            color: var(--ghelfi-gold);
+            font-size: 1.8rem;
+            letter-spacing: 5px;
+            margin-bottom: 24px;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .intro-lead {
+            max-width: 760px;
+            margin: 0 auto 18px;
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+            font-size: 1.35rem;
+            line-height: 1.35;
+            color: #2c2c2c;
+        }
+
+        .intro-copy {
+            max-width: 760px;
+            margin: 0 auto 50px;
+            color: #555;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .badge-item {
+            padding: 30px;
+            position: relative;
+        }
+
+        .badge-item i {
+            font-size: 2.4rem;
+            color: var(--ghelfi-gold);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* PRODOTTI */
+        .products-head {
+            background: var(--ghelfi-cream);
+            padding: 55px 20px 35px;
+            text-align: center;
+        }
+
+        .products-head .kicker {
+            color: var(--ghelfi-gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .products-head h3 {
+            font-family: 'EB Garamond', serif;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 12px;
+        }
+
+        .products-head p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: #555;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .product-card {
+            width: 100%;
+            height: 88vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.35s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card-content {
+            z-index: 5;
+            text-align: center;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .card-kicker {
+            color: rgba(255,255,255,0.82);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+        }
+
+        .card-content h2 {
+            color: var(--ghelfi-gold);
+            font-size: clamp(2.6rem, 5vw, 4rem);
+            margin-bottom: 8px;
+            letter-spacing: 5px;
+        }
+
+        .subtitle {
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.9rem;
+            margin-bottom: 38px;
+            opacity: 0.9;
+        }
+
+        .btn-wrapper {
+            width: 160px;
+            height: 160px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: 0.5s;
+            animation: artisanMove 5s ease-in-out infinite;
+        }
+
+        .btn-corona {
+            width: 140px;
+            height: 140px;
+            border: 2px solid var(--ghelfi-gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+        }
+
+        .btn-vite {
+            width: 90px;
+            height: 140px;
+            border: 2px solid var(--ghelfi-gold);
+            border-radius: 12px 12px 2px 2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+        }
+
+        .btn-wrapper span {
+            color: var(--ghelfi-gold);
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .product-card:hover .btn-corona,
+        .product-card:hover .btn-vite {
+            background: var(--ghelfi-gold);
+        }
+
+        .card-origine:hover span {
+            color: var(--ghelfi-blue);
+        }
+
+        .card-profondo:hover span {
+            color: var(--ghelfi-black);
+        }
+
+        .card-mate:hover span {
+            color: var(--ghelfi-red);
+        }
+
+        .card-elisir:hover span {
+            color: var(--ghelfi-green);
+        }
+
+        @keyframes artisanMove {
+            0%, 100% { transform: rotate(-4deg); }
+            50% { transform: rotate(4deg); }
+        }
+
+        .evocative {
+            font-size: 0.96rem;
+            color: #fff;
+            font-style: italic;
+            opacity: 0.88;
+            letter-spacing: 0.5px;
+            max-width: 220px;
+            line-height: 1.45;
+        }
+
+        @media (min-width: 992px) {
+            .product-card {
+                width: 25%;
+                height: 100vh;
+            }
+        }
+
+        /* FOOTER */
+        .footer-main {
+            padding: 90px 20px 70px;
+            text-align: center;
+            background: var(--ghelfi-cream);
+        }
+
+        .footer-logo-facit {
+            width: 110px;
+            margin-bottom: 20px;
+        }
+
+        .footer-main h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer-main .footer-copy {
+            max-width: 540px;
+            margin: 20px auto 0;
+            color: #666;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-links a {
+            color: var(--ghelfi-black);
+            font-size: 1.6rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--ghelfi-gold);
+        }
+
+        .footer-bottom {
+            background: #000;
+            color: #666;
+            padding: 30px 20px;
+            font-size: 0.75rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer-bottom a {
+            color: #444;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--ghelfi-gold);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fs-menu" id="fsMenu">
+        <img src="assets/stella.svg" class="menu-exit" onclick="toggleMenu()" alt="Chiudi">
+        <a href="index.html" class="link-home">Home</a>
+        <a href="#prodotti" class="link-origine" onclick="toggleMenu()">Origine</a>
+        <a href="#prodotti" class="link-profondo" onclick="toggleMenu()">Profondo</a>
+        <a href="#prodotti" class="link-mate" onclick="toggleMenu()">Mate</a>
+        <a href="#prodotti" class="link-elisir" onclick="toggleMenu()">Elisir</a>
+        <a href="#contatti" class="link-contatti" onclick="toggleMenu()">Contatti</a>
+    </div>
+
+    <header class="hero-header">
+        <img src="assets/stella.svg" class="menu-trigger" onclick="toggleMenu()" alt="Menu">
+        <a href="index.html" class="logo-text marion">GHELFI</a>
+        <div class="hero-kicker">Facit in Mantua</div>
+        <p class="hero-claim">Fermenti vivi. Tempo, materia, trasformazione.</p>
+        <p class="hero-desc">
+            Ghelfi interpreta la fermentazione come linguaggio: tè selezionati, lavorazione lenta,
+            struttura asciutta e profili nitidi. Da Mantova, una collezione essenziale di kombucha e aceto.
+        </p>
+    </header>
+
+    <section class="intro-section">
+        <h5 class="marion">Integrità e natura</h5>
+        <p class="intro-lead">
+            Prodotto vivo, non filtrato. L’eventuale presenza di sedimenti naturali
+            testimonia l’integrità del fermento madre.
+        </p>
+        <p class="intro-copy">
+            Ogni bottiglia nasce da una fermentazione lenta e controllata, pensata per essere servita a tavola,
+            preferibilmente in calice. Nessun artificio: solo tempo, precisione e materia prima selezionata.
+        </p>
+
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-6 col-md-3 badge-item">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>100% Vegan</span>
+                </div>
+                <div class="col-6 col-md-3 badge-item">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                    <span>Gluten Free</span>
+                </div>
+                <div class="col-6 col-md-3 badge-item">
+                    <i class="fa-solid fa-flask-vial"></i>
+                    <span>Senza Solfiti</span>
+                </div>
+                <div class="col-6 col-md-3 badge-item">
+                    <i class="fa-solid fa-droplet-slash"></i>
+                    <span>Non Filtrato</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-head" id="prodotti">
+        <div class="kicker">Selezione</div>
+        <h3 class="marion">La collezione</h3>
+        <p>
+            Quattro espressioni, una stessa visione: origine, profondità, materia vegetale e trasformazione.
+        </p>
+    </section>
+
+    <section class="product-grid">
+        <a href="classica.html" class="product-card card-origine" style="background-color: var(--ghelfi-blue);">
+            <div class="card-content">
+                <div class="card-kicker marion">Ghelfi</div>
+                <h2 class="marion">ORIGINE</h2>
+                <div class="subtitle">Kombucha</div>
+                <div class="btn-wrapper">
+                    <div class="btn-corona"><span class="marion">Scopri</span></div>
+                </div>
+                <div class="evocative">Il punto di partenza.</div>
+            </div>
+        </a>
+
+        <a href="special.html" class="product-card card-profondo" style="background-color: var(--ghelfi-black);">
+            <div class="card-content">
+                <div class="card-kicker marion">Ghelfi</div>
+                <h2 class="marion">PROFONDO</h2>
+                <div class="subtitle">Kombucha</div>
+                <div class="btn-wrapper">
+                    <div class="btn-corona"><span class="marion">Scopri</span></div>
+                </div>
+                <div class="evocative">Più lento. Più denso.</div>
+            </div>
+        </a>
+
+        <a href="mate.html" class="product-card card-mate" style="background-color: var(--ghelfi-red);">
+            <div class="card-content">
+                <div class="card-kicker marion">Ghelfi</div>
+                <h2 class="marion">MATE</h2>
+                <div class="subtitle">Kombucha</div>
+                <div class="btn-wrapper">
+                    <div class="btn-corona"><span class="marion">Scopri</span></div>
+                </div>
+                <div class="evocative">Verde. Amaro. Vivo.</div>
+            </div>
+        </a>
+
+        <a href="aceto.html" class="product-card card-elisir" style="background-color: var(--ghelfi-green);">
+            <div class="card-content">
+                <div class="card-kicker marion">Ghelfi</div>
+                <h2 class="marion">ELISIR</h2>
+                <div class="subtitle">Aceto</div>
+                <div class="btn-wrapper">
+                    <div class="btn-vite"><span class="marion">Scopri</span></div>
+                </div>
+                <div class="evocative">Tempo, trasformazione.</div>
+            </div>
+        </a>
+    </section>
+
+    <footer id="contatti" class="footer-main">
+        <img src="assets/facit-in-mantua.png" class="footer-logo-facit" alt="Facit in Mantua">
+        <h3 class="serif-italic">Facit in Mantua</h3>
+        <p class="marion mt-3" style="color: var(--ghelfi-gold); letter-spacing: 3px;">Ghelfi Fermenta</p>
+        <p class="footer-copy">
+            Una piccola produzione mantovana dedicata alla fermentazione come espressione di stile,
+            rigore e materia viva.
+        </p>
+        <p class="text-muted small mt-3">
+            Mantova, Italia |
+            <a href="mailto:info@ghelfifermenta.it" class="text-muted">info@ghelfifermenta.it</a>
+        </p>
+
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        </div>
+    </footer>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="mb-1">© Copyright <span id="year-range">2025-2026</span> Ghelfi Fermenta</p>
+            <a href="https://grafichello.it">Partner web: grafichello.it</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const m = document.getElementById('fsMenu');
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+            document.body.style.overflow = (m.style.display === 'flex') ? 'hidden' : 'auto';
+        }
+
+        const currentYear = new Date().getFullYear();
+        if (currentYear > 2026) {
+            document.getElementById('year-range').textContent = `2025-${currentYear}`;
+        }
+    </script>
+</body>
+</html>
