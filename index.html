@@ -436,48 +436,35 @@ a {
     filter: drop-shadow(0 8px 18px rgba(0,0,0,0.10));
 }
 
-/* fascia esterna continua */
+/* fascia esterna del tappo */
 .btn-vite-svg .vite-band {
     fill: none;
     stroke: var(--ghelfi-gold);
-    stroke-width: 10;
+    stroke-width: 9;
+    transition: stroke 0.35s ease, fill 0.35s ease;
 }
 
-/* piccole scanalature della vite */
+/* piccole tacche della ghiera */
 .btn-vite-svg .vite-notch {
     stroke: var(--ghelfi-gold);
-    stroke-width: 2.2;
+    stroke-width: 2;
     stroke-linecap: round;
-}
-
-/* anello morbido interno alla fascia */
-.btn-vite-svg .vite-shadow-ring {
-    fill: none;
-    stroke: rgba(225, 207, 146, 0.22);
-    stroke-width: 4;
     transition: stroke 0.35s ease;
 }
 
-/* disco interno */
+/* disco centrale */
 .btn-vite-svg .vite-fill {
     fill: transparent;
     transition: fill 0.35s ease;
-}
-
-.btn-vite-svg .vite-ring {
-    fill: none;
-    stroke: var(--ghelfi-gold);
-    stroke-width: 2;
-    transition: stroke 0.35s ease;
 }
 
 /* tratteggio interno */
 .btn-vite-svg .vite-inner {
     fill: none;
     stroke: var(--ghelfi-gold);
-    stroke-width: 1.4;
-    stroke-dasharray: 2.4 2.4;
-    opacity: 0.9;
+    stroke-width: 1.6;
+    stroke-dasharray: 2.6 2.6;
+    opacity: 0.95;
     transition: stroke 0.35s ease, opacity 0.35s ease;
 }
 
@@ -491,13 +478,17 @@ a {
     transition: fill 0.35s ease;
 }
 
-/* hover ELISIR */
-.card-elisir:hover .btn-vite-svg .vite-shadow-ring {
-    stroke: rgba(225, 207, 146, 0.35);
+/* hover ELISIR: tappo nero */
+.card-elisir:hover .btn-vite-svg .vite-band {
+    stroke: var(--ghelfi-black);
+}
+
+.card-elisir:hover .btn-vite-svg .vite-notch {
+    stroke: var(--ghelfi-black);
 }
 
 .card-elisir:hover .btn-vite-svg .vite-fill {
-    fill: var(--ghelfi-gold);
+    fill: var(--ghelfi-black);
 }
 
 .card-elisir:hover .btn-vite-svg .vite-inner {
@@ -877,38 +868,34 @@ a {
         <div class="btn-wrapper">
     <svg class="btn-vite-svg" viewBox="0 0 100 100" aria-label="Svita Elisir">
         <g transform="translate(50,50)">
-            <!-- fascia continua del tappo a vite -->
-            <circle r="41" class="vite-band"></circle>
+            <!-- fascia continua del tappo -->
+            <circle r="39" class="vite-band"></circle>
 
-            <!-- scanalature della vite -->
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(0)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(20)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(40)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(60)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(80)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(100)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(120)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(140)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(160)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(180)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(200)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(220)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(240)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(260)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(280)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(300)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(320)"></line>
-            <line x1="0" y1="-47" x2="0" y2="-36" class="vite-notch" transform="rotate(340)"></line>
+            <!-- piccole tacche della vite -->
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(0)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(20)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(40)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(60)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(80)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(100)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(120)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(140)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(160)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(180)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(200)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(220)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(240)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(260)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(280)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(300)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(320)"></line>
+            <line x1="0" y1="-44" x2="0" y2="-38" class="vite-notch" transform="rotate(340)"></line>
 
-            <!-- anello morbido -->
-            <circle r="36" class="vite-shadow-ring"></circle>
+            <!-- disco centrale -->
+            <circle r="28" class="vite-fill"></circle>
 
-            <!-- corpo -->
-            <circle r="34" class="vite-fill"></circle>
-            <circle r="30" class="vite-ring"></circle>
-
-            <!-- tratteggio interno -->
-            <circle r="24" class="vite-inner"></circle>
+            <!-- un solo tratteggio -->
+            <circle r="22" class="vite-inner"></circle>
 
             <!-- testo -->
             <text y="4" class="vite-text">SVITA</text>
