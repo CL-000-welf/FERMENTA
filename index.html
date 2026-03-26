@@ -11,9 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* =========================
-           PALETTE
-        ========================= */
         :root {
             --ghelfi-blue: #5B7D8E;
             --ghelfi-red: #C1444E;
@@ -23,9 +20,6 @@
             --ghelfi-cream: #F5F5DC;
         }
 
-        /* =========================
-           BASE
-        ========================= */
         html {
             scroll-behavior: smooth;
         }
@@ -51,9 +45,7 @@
             font-style: italic;
         }
 
-        /* =========================
-           MENU FULLSCREEN
-        ========================= */
+        /* MENU FULLSCREEN */
         .fs-menu {
             position: fixed;
             inset: 0;
@@ -97,9 +89,7 @@
         .link-mate:hover { color: var(--ghelfi-red); }
         .link-elisir:hover { color: var(--ghelfi-green); }
 
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
         .hero-header {
             min-height: 92vh;
             padding: 60px 20px 90px;
@@ -167,9 +157,7 @@
             color: rgba(26, 26, 26, 0.86);
         }
 
-        /* =========================
-           SEZIONE INTEGRITÀ
-        ========================= */
+        /* INTEGRITÀ */
         .integrita-section {
             background: #fff;
             padding: 90px 20px;
@@ -213,9 +201,7 @@
             margin-bottom: 14px;
         }
 
-        /* =========================
-           INTRO COLLEZIONE
-        ========================= */
+        /* INTRO COLLEZIONE */
         .products-head {
             padding: 55px 20px 35px;
             text-align: center;
@@ -246,9 +232,7 @@
             line-height: 1.75;
         }
 
-        /* =========================
-           GRID PRODOTTI
-        ========================= */
+        /* GRID PRODOTTI */
         .product-grid {
             display: flex;
             flex-wrap: wrap;
@@ -326,9 +310,7 @@
             }
         }
 
-        /* =========================
-           BOTTONI
-        ========================= */
+        /* BOTTONI */
         .btn-wrapper {
             width: 170px;
             height: 170px;
@@ -344,32 +326,39 @@
             50% { transform: rotate(4deg); }
         }
 
-        /* Tappo a corona SVG */
+        /* TAPPO A CORONA SVG */
         .btn-corona-svg {
             width: 150px;
             height: 150px;
             transition: transform 0.35s ease, filter 0.35s ease;
             filter: drop-shadow(0 8px 18px rgba(0,0,0,0.10));
+            overflow: visible;
         }
 
-        .btn-corona-svg rect,
-        .btn-corona-svg .corona-ring,
-        .btn-corona-svg .corona-inner {
+        .btn-corona-svg .tooth rect {
             fill: var(--ghelfi-gold);
-            stroke: var(--ghelfi-gold);
-            transition: fill 0.35s ease, stroke 0.35s ease;
+            transition: fill 0.35s ease;
+        }
+
+        .btn-corona-svg .corona-fill {
+            fill: transparent;
+            transition: fill 0.35s ease;
         }
 
         .btn-corona-svg .corona-ring {
             fill: none;
+            stroke: var(--ghelfi-gold);
             stroke-width: 2;
+            transition: stroke 0.35s ease;
         }
 
         .btn-corona-svg .corona-inner {
             fill: none;
+            stroke: var(--ghelfi-gold);
             stroke-width: 1;
             stroke-dasharray: 2 2;
             opacity: 0.72;
+            transition: stroke 0.35s ease, opacity 0.35s ease;
         }
 
         .btn-corona-svg .corona-text {
@@ -381,7 +370,55 @@
             transition: fill 0.35s ease;
         }
 
-        /* Tappo a vite */
+        /* Hover ORIGINE */
+        .card-origine:hover .btn-corona-svg .corona-fill {
+            fill: var(--ghelfi-gold);
+        }
+
+        .card-origine:hover .btn-corona-svg .tooth rect,
+        .card-origine:hover .btn-corona-svg .corona-ring,
+        .card-origine:hover .btn-corona-svg .corona-inner {
+            fill: var(--ghelfi-gold);
+            stroke: var(--ghelfi-gold);
+        }
+
+        .card-origine:hover .btn-corona-svg .corona-text {
+            fill: var(--ghelfi-blue);
+        }
+
+        /* Hover PROFONDO */
+        .card-profondo:hover .btn-corona-svg .corona-fill {
+            fill: var(--ghelfi-gold);
+        }
+
+        .card-profondo:hover .btn-corona-svg .tooth rect,
+        .card-profondo:hover .btn-corona-svg .corona-ring,
+        .card-profondo:hover .btn-corona-svg .corona-inner {
+            fill: var(--ghelfi-gold);
+            stroke: var(--ghelfi-gold);
+        }
+
+        .card-profondo:hover .btn-corona-svg .corona-text {
+            fill: var(--ghelfi-black);
+        }
+
+        /* Hover MATE */
+        .card-mate:hover .btn-corona-svg .corona-fill {
+            fill: var(--ghelfi-gold);
+        }
+
+        .card-mate:hover .btn-corona-svg .tooth rect,
+        .card-mate:hover .btn-corona-svg .corona-ring,
+        .card-mate:hover .btn-corona-svg .corona-inner {
+            fill: var(--ghelfi-gold);
+            stroke: var(--ghelfi-gold);
+        }
+
+        .card-mate:hover .btn-corona-svg .corona-text {
+            fill: var(--ghelfi-red);
+        }
+
+        /* TAPPO A VITE */
         .btn-vite {
             position: relative;
             width: 104px;
@@ -434,31 +471,6 @@
             transition: color 0.35s ease;
         }
 
-        /* Hover colore tappi */
-        .card-origine:hover .btn-corona-svg rect,
-        .card-origine:hover .btn-corona-svg .corona-ring,
-        .card-origine:hover .btn-corona-svg .corona-inner,
-        .card-origine:hover .btn-corona-svg .corona-text {
-            fill: var(--ghelfi-blue);
-            stroke: var(--ghelfi-blue);
-        }
-
-        .card-profondo:hover .btn-corona-svg rect,
-        .card-profondo:hover .btn-corona-svg .corona-ring,
-        .card-profondo:hover .btn-corona-svg .corona-inner,
-        .card-profondo:hover .btn-corona-svg .corona-text {
-            fill: var(--ghelfi-black);
-            stroke: var(--ghelfi-black);
-        }
-
-        .card-mate:hover .btn-corona-svg rect,
-        .card-mate:hover .btn-corona-svg .corona-ring,
-        .card-mate:hover .btn-corona-svg .corona-inner,
-        .card-mate:hover .btn-corona-svg .corona-text {
-            fill: var(--ghelfi-red);
-            stroke: var(--ghelfi-red);
-        }
-
         .card-elisir:hover .btn-vite {
             background: var(--ghelfi-gold);
             box-shadow: 0 16px 35px rgba(0,0,0,0.16);
@@ -482,9 +494,7 @@
             );
         }
 
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
         .footer-main {
             padding: 90px 20px 70px;
             text-align: center;
@@ -541,7 +551,6 @@
 </head>
 <body>
 
-    <!-- MENU FULLSCREEN -->
     <div class="fs-menu" id="fsMenu">
         <img src="assets/stella.svg" class="menu-exit" onclick="toggleMenu()" alt="Chiudi">
         <a href="index.html" class="link-home">Home</a>
@@ -552,7 +561,6 @@
         <a href="#contatti" class="link-contatti" onclick="toggleMenu()">Contatti</a>
     </div>
 
-    <!-- HERO -->
     <header class="hero-header">
         <img src="assets/stella.svg" class="menu-trigger" onclick="toggleMenu()" alt="Menu">
         <a href="index.html" class="logo-text marion">GHELFI</a>
@@ -565,7 +573,6 @@
         </p>
     </header>
 
-    <!-- INTEGRITÀ -->
     <section class="integrita-section">
         <h5 class="marion">Integrità e natura</h5>
 
@@ -601,7 +608,6 @@
         </div>
     </section>
 
-    <!-- INTRO COLLEZIONE -->
     <section class="products-head" id="prodotti">
         <div class="products-kicker">Selezione</div>
         <h3 class="marion">La collezione</h3>
@@ -610,10 +616,8 @@
         </p>
     </section>
 
-    <!-- CARD PRODOTTI -->
     <section class="product-grid">
 
-        <!-- ORIGINE -->
         <a href="classica.html" class="product-card card-origine" style="background-color: var(--ghelfi-blue);">
             <div class="card-content">
                 <img src="assets/logo.svg" class="card-logo" alt="Logo Ghelfi">
@@ -624,12 +628,10 @@
                 <div class="btn-wrapper">
                     <svg class="btn-corona-svg" viewBox="0 0 100 100" aria-label="Stappa Origine">
                         <g transform="translate(50,50)">
-                            <!-- Dente base -->
-                            <g id="tooth-o">
+                            <g id="tooth-o" class="tooth">
                                 <rect x="-2" y="-48" width="4" height="10" rx="1"></rect>
                             </g>
 
-                            <!-- 21 denti -->
                             <use href="#tooth-o" transform="rotate(0)"></use>
                             <use href="#tooth-o" transform="rotate(17.142857)"></use>
                             <use href="#tooth-o" transform="rotate(34.285714)"></use>
@@ -652,6 +654,7 @@
                             <use href="#tooth-o" transform="rotate(325.714285)"></use>
                             <use href="#tooth-o" transform="rotate(342.857142)"></use>
 
+                            <circle r="34" class="corona-fill"></circle>
                             <circle r="38" class="corona-ring"></circle>
                             <circle r="28" class="corona-inner"></circle>
                             <text y="4" class="corona-text">STAPPA</text>
@@ -663,7 +666,6 @@
             </div>
         </a>
 
-        <!-- PROFONDO -->
         <a href="special.html" class="product-card card-profondo" style="background-color: var(--ghelfi-black);">
             <div class="card-content">
                 <img src="assets/logo.svg" class="card-logo" alt="Logo Ghelfi">
@@ -674,7 +676,7 @@
                 <div class="btn-wrapper">
                     <svg class="btn-corona-svg" viewBox="0 0 100 100" aria-label="Stappa Profondo">
                         <g transform="translate(50,50)">
-                            <g id="tooth-p">
+                            <g id="tooth-p" class="tooth">
                                 <rect x="-2" y="-48" width="4" height="10" rx="1"></rect>
                             </g>
 
@@ -700,6 +702,7 @@
                             <use href="#tooth-p" transform="rotate(325.714285)"></use>
                             <use href="#tooth-p" transform="rotate(342.857142)"></use>
 
+                            <circle r="34" class="corona-fill"></circle>
                             <circle r="38" class="corona-ring"></circle>
                             <circle r="28" class="corona-inner"></circle>
                             <text y="4" class="corona-text">STAPPA</text>
@@ -711,7 +714,6 @@
             </div>
         </a>
 
-        <!-- MATE -->
         <a href="mate.html" class="product-card card-mate" style="background-color: var(--ghelfi-red);">
             <div class="card-content">
                 <img src="assets/logo.svg" class="card-logo" alt="Logo Ghelfi">
@@ -722,7 +724,7 @@
                 <div class="btn-wrapper">
                     <svg class="btn-corona-svg" viewBox="0 0 100 100" aria-label="Stappa Mate">
                         <g transform="translate(50,50)">
-                            <g id="tooth-m">
+                            <g id="tooth-m" class="tooth">
                                 <rect x="-2" y="-48" width="4" height="10" rx="1"></rect>
                             </g>
 
@@ -748,6 +750,7 @@
                             <use href="#tooth-m" transform="rotate(325.714285)"></use>
                             <use href="#tooth-m" transform="rotate(342.857142)"></use>
 
+                            <circle r="34" class="corona-fill"></circle>
                             <circle r="38" class="corona-ring"></circle>
                             <circle r="28" class="corona-inner"></circle>
                             <text y="4" class="corona-text">STAPPA</text>
@@ -759,7 +762,6 @@
             </div>
         </a>
 
-        <!-- ELISIR -->
         <a href="aceto.html" class="product-card card-elisir" style="background-color: var(--ghelfi-green);">
             <div class="card-content">
                 <img src="assets/logo.svg" class="card-logo" alt="Logo Ghelfi">
@@ -778,7 +780,6 @@
         </a>
     </section>
 
-    <!-- FOOTER -->
     <footer id="contatti" class="footer-main">
         <img src="assets/facit-in-mantua.png" class="footer-logo-facit" alt="Facit in Mantua">
         <h3 class="serif-italic">Facit in Mantua</h3>
