@@ -12,233 +12,233 @@
 
     <style>
         :root {
-            --ghelfi-blue: #5B7D8E;
-            --ghelfi-red: #C1444E;
-            --ghelfi-black: #1A1A1A;
-            --ghelfi-green: #3E5B44;
-            --ghelfi-gold: #E1CF92;
-            --ghelfi-cream: #F5F5DC;
-        }
+    --ghelfi-blue: #5B7D8E;
+    --ghelfi-red: #C1444E;
+    --ghelfi-black: #1A1A1A;
+    --ghelfi-green: #3E5B44;
+    --ghelfi-gold: #E1CF92;
+    --ghelfi-cream: #F5F5DC;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--ghelfi-cream);
-            color: var(--ghelfi-black);
-            overflow-x: hidden;
-        }
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--ghelfi-cream);
+    color: var(--ghelfi-black);
+    overflow-x: hidden;
+}
 
-        a {
-            text-decoration: none;
-        }
+a {
+    text-decoration: none;
+}
 
-        .marion {
-            font-family: 'EB Garamond', serif;
-            text-transform: uppercase;
-        }
+.marion {
+    font-family: 'EB Garamond', serif;
+    text-transform: uppercase;
+}
 
-        .serif-italic {
-            font-family: 'EB Garamond', serif;
-            font-style: italic;
-        }
+.serif-italic {
+    font-family: 'EB Garamond', serif;
+    font-style: italic;
+}
 
-        /* MENU FULLSCREEN */
-        .fs-menu {
-            position: fixed;
-            inset: 0;
-            background: rgba(245, 245, 220, 0.98);
-            backdrop-filter: blur(6px);
-            z-index: 2000;
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+/* MENU FULLSCREEN */
+.fs-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(245, 245, 220, 0.98);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-        .menu-exit {
-            position: absolute;
-            top: 36px;
-            width: 78px;
-            cursor: pointer;
-            transition: transform 0.5s ease;
-        }
+.menu-exit {
+    position: absolute;
+    top: 36px;
+    width: 78px;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
 
-        .menu-exit:hover {
-            transform: rotate(-180deg);
-        }
+.menu-exit:hover {
+    transform: rotate(-180deg);
+}
 
-        .fs-menu a {
-            font-family: 'EB Garamond', serif;
-            font-size: clamp(2rem, 8vw, 4rem);
-            color: var(--ghelfi-gold);
-            font-weight: 700;
-            margin: 10px 0;
-            transition: color 0.25s ease;
-        }
+.fs-menu a {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: var(--ghelfi-gold);
+    font-weight: 700;
+    margin: 10px 0;
+    transition: color 0.25s ease;
+}
 
-        .link-home:hover,
-        .link-contatti:hover {
-            color: var(--ghelfi-black);
-        }
+.link-home:hover,
+.link-contatti:hover {
+    color: var(--ghelfi-black);
+}
 
-        .link-origine:hover { color: var(--ghelfi-blue); }
-        .link-profondo:hover { color: var(--ghelfi-black); }
-        .link-mate:hover { color: var(--ghelfi-red); }
-        .link-elisir:hover { color: var(--ghelfi-green); }
+.link-origine:hover { color: var(--ghelfi-blue); }
+.link-profondo:hover { color: var(--ghelfi-black); }
+.link-mate:hover { color: var(--ghelfi-red); }
+.link-elisir:hover { color: var(--ghelfi-green); }
 
-        /* HERO */
-        .hero-header {
-            min-height: 92vh;
-            padding: 60px 20px 90px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background:
-                linear-gradient(to bottom, rgba(245,245,220,0.94), rgba(245,245,220,0.98)),
-                radial-gradient(circle at center, rgba(225,207,146,0.12), transparent 60%);
-        }
+/* HERO */
+.hero-header {
+    min-height: 92vh;
+    padding: 60px 20px 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background:
+        linear-gradient(to bottom, rgba(245,245,220,0.94), rgba(245,245,220,0.98)),
+        radial-gradient(circle at center, rgba(225,207,146,0.12), transparent 60%);
+}
 
-        .menu-trigger {
-            width: 120px;
-            margin-bottom: 26px;
-            cursor: pointer;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.menu-trigger {
+    width: 120px;
+    margin-bottom: 26px;
+    cursor: pointer;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .menu-trigger:hover {
-            transform: scale(1.08) rotate(144deg);
-        }
+.menu-trigger:hover {
+    transform: scale(1.08) rotate(144deg);
+}
 
-        .logo-text {
-            display: block;
-            font-size: clamp(3.7rem, 13vw, 9rem);
-            letter-spacing: clamp(10px, 1.8vw, 18px);
-            line-height: 0.95;
-            color: var(--ghelfi-gold);
-            margin-bottom: 10px;
-        }
+.logo-text {
+    display: block;
+    font-size: clamp(3.7rem, 13vw, 9rem);
+    letter-spacing: clamp(10px, 1.8vw, 18px);
+    line-height: 0.95;
+    color: var(--ghelfi-gold);
+    margin-bottom: 10px;
+}
 
-        .logo-scudetto {
-            width: min(280px, 58vw);
-            height: auto;
-            margin: 10px 0 18px;
-            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.10));
-        }
+.logo-scudetto {
+    width: min(280px, 58vw);
+    height: auto;
+    margin: 10px 0 18px;
+    filter: drop-shadow(0 10px 30px rgba(0,0,0,0.10));
+}
 
-        .hero-kicker {
-            color: var(--ghelfi-gold);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.82rem;
-            margin-bottom: 16px;
-        }
+.hero-kicker {
+    color: var(--ghelfi-gold);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.82rem;
+    margin-bottom: 16px;
+}
 
-        .hero-claim {
-            max-width: 760px;
-            margin: 0 auto 16px;
-            font-family: 'EB Garamond', serif;
-            font-size: clamp(1.8rem, 3vw, 2.8rem);
-            line-height: 1.12;
-            color: var(--ghelfi-black);
-        }
+.hero-claim {
+    max-width: 760px;
+    margin: 0 auto 16px;
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    line-height: 1.12;
+    color: var(--ghelfi-black);
+}
 
-        .hero-desc {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 0 20px;
-            font-weight: 300;
-            line-height: 1.75;
-            font-size: 1rem;
-            color: rgba(26, 26, 26, 0.86);
-        }
+.hero-desc {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 20px;
+    font-weight: 300;
+    line-height: 1.75;
+    font-size: 1rem;
+    color: rgba(26, 26, 26, 0.86);
+}
 
-        /* INTEGRITÀ */
-        .integrita-section {
-            background: #fff;
-            padding: 90px 20px;
-            border-top: 1px solid rgba(225, 207, 146, 0.75);
-            border-bottom: 1px solid rgba(225, 207, 146, 0.75);
-            text-align: center;
-        }
+/* INTEGRITÀ */
+.integrita-section {
+    background: #fff;
+    padding: 90px 20px;
+    border-top: 1px solid rgba(225, 207, 146, 0.75);
+    border-bottom: 1px solid rgba(225, 207, 146, 0.75);
+    text-align: center;
+}
 
-        .integrita-section h5 {
-            color: var(--ghelfi-gold);
-            font-size: 1.8rem;
-            letter-spacing: 5px;
-            margin-bottom: 24px;
-            font-family: 'EB Garamond', serif;
-        }
+.integrita-section h5 {
+    color: var(--ghelfi-gold);
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+    margin-bottom: 24px;
+    font-family: 'EB Garamond', serif;
+}
 
-        .integrita-lead {
-            max-width: 760px;
-            margin: 0 auto 18px;
-            font-size: 1.35rem;
-            line-height: 1.35;
-            color: #2c2c2c;
-        }
+.integrita-lead {
+    max-width: 760px;
+    margin: 0 auto 18px;
+    font-size: 1.35rem;
+    line-height: 1.35;
+    color: #2c2c2c;
+}
 
-        .integrita-copy {
-            max-width: 760px;
-            margin: 0 auto 44px;
-            color: #555;
-            line-height: 1.8;
-            font-weight: 300;
-        }
+.integrita-copy {
+    max-width: 760px;
+    margin: 0 auto 44px;
+    color: #555;
+    line-height: 1.8;
+    font-weight: 300;
+}
 
-        .badge-item {
-            padding: 24px 16px;
-        }
+.badge-item {
+    padding: 24px 16px;
+}
 
-        .badge-item i {
-            font-size: 2.2rem;
-            color: var(--ghelfi-gold);
-            display: block;
-            margin-bottom: 14px;
-        }
+.badge-item i {
+    font-size: 2.2rem;
+    color: var(--ghelfi-gold);
+    display: block;
+    margin-bottom: 14px;
+}
 
-        /* INTRO COLLEZIONE */
-        .products-head {
-            padding: 55px 20px 35px;
-            text-align: center;
-            background: var(--ghelfi-cream);
-        }
+/* INTRO COLLEZIONE */
+.products-head {
+    padding: 55px 20px 35px;
+    text-align: center;
+    background: var(--ghelfi-cream);
+}
 
-        .products-kicker {
-            color: var(--ghelfi-gold);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
-        }
+.products-kicker {
+    color: var(--ghelfi-gold);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
 
-        .products-head h3 {
-            font-family: 'EB Garamond', serif;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 12px;
-        }
+.products-head h3 {
+    font-family: 'EB Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 12px;
+}
 
-        .products-head p {
-            max-width: 760px;
-            margin: 0 auto;
-            color: #555;
-            font-weight: 300;
-            line-height: 1.75;
-        }
+.products-head p {
+    max-width: 760px;
+    margin: 0 auto;
+    color: #555;
+    font-weight: 300;
+    line-height: 1.75;
+}
 
-        /* GRID PRODOTTI */
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-        }
+/* GRID PRODOTTI */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
 
-      .product-card {
+.product-card {
     width: 100%;
     height: 88vh;
     display: flex;
@@ -247,372 +247,375 @@
     align-items: center;
     position: relative;
     overflow: hidden;
-    transition: transform 0.35s ease, filter 0.35s ease;
-    will-change: transform;
 }
 
-/* desktop: niente salita, solo micro-zoom morbido */
-@media (hover: hover) and (pointer: fine) {
-    .product-card:hover {
-        transform: scale(1.0);
-        z-index: 3;
+.product-card:hover {
+    transform: none;
+}
+
+.card-content {
+    width: 100%;
+    padding: 0 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.card-logo {
+    width: 68px;
+    height: auto;
+    margin-bottom: 12px;
+    opacity: 0.92;
+}
+
+.card-brand {
+    color: rgba(255,255,255,0.82);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    margin-bottom: 12px;
+}
+
+.card-content h2 {
+    color: var(--ghelfi-gold);
+    font-size: clamp(2.2rem, 4.1vw, 3.9rem);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    line-height: 0.95;
+    text-align: center;
+    max-width: 92%;
+    text-wrap: balance;
+}
+
+.subtitle {
+    color: rgba(255,255,255,0.92);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    margin-bottom: 38px;
+}
+
+.evocative {
+    max-width: 240px;
+    font-size: 0.96rem;
+    color: rgba(255,255,255,0.9);
+    font-style: italic;
+    line-height: 1.45;
+    letter-spacing: 0.4px;
+}
+
+/* BOTTONI */
+.btn-wrapper {
+    width: 170px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 22px;
+    animation: artisanMove 5s ease-in-out infinite;
+}
+
+@keyframes artisanMove {
+    0%, 100% { transform: rotate(-4deg); }
+    50% { transform: rotate(4deg); }
+}
+
+/* TAPPO A CORONA SVG */
+.btn-corona-svg {
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(0 8px 18px rgba(0,0,0,0.10));
+    overflow: visible;
+}
+
+/* denti sempre oro */
+.btn-corona-svg .tooth,
+.btn-corona-svg use {
+    fill: var(--ghelfi-gold);
+}
+
+/* anello morbido tra denti e corpo tappo */
+.btn-corona-svg .corona-shadow-ring {
+    fill: none;
+    stroke: rgba(225, 207, 146, 0.28);
+    stroke-width: 5;
+    transition: stroke 0.35s ease, opacity 0.35s ease;
+}
+
+.btn-corona-svg .corona-fill {
+    fill: transparent;
+    transition: fill 0.35s ease;
+}
+
+.btn-corona-svg .corona-ring {
+    fill: none;
+    stroke: var(--ghelfi-gold);
+    stroke-width: 2;
+    transition: stroke 0.35s ease;
+}
+
+.btn-corona-svg .corona-inner {
+    fill: none;
+    stroke: var(--ghelfi-gold);
+    stroke-width: 1.4;
+    stroke-dasharray: 2.4 2.4;
+    opacity: 0.9;
+    transition: stroke 0.35s ease, opacity 0.35s ease;
+}
+
+.btn-corona-svg .corona-text {
+    fill: var(--ghelfi-gold);
+    font-size: 7px;
+    text-anchor: middle;
+    letter-spacing: 1.5px;
+    font-family: 'EB Garamond', serif;
+    transition: fill 0.35s ease;
+}
+
+/* Hover ORIGINE */
+.card-origine:hover .btn-corona-svg .corona-shadow-ring {
+    stroke: rgba(225, 207, 146, 0.42);
+}
+.card-origine:hover .btn-corona-svg .corona-fill {
+    fill: var(--ghelfi-gold);
+}
+.card-origine:hover .btn-corona-svg .corona-ring {
+    stroke: var(--ghelfi-gold);
+}
+.card-origine:hover .btn-corona-svg .corona-inner {
+    stroke: var(--ghelfi-blue);
+    opacity: 1;
+}
+.card-origine:hover .btn-corona-svg .corona-text {
+    fill: var(--ghelfi-blue);
+}
+
+/* Hover PROFONDO */
+.card-profondo:hover .btn-corona-svg .corona-shadow-ring {
+    stroke: rgba(225, 207, 146, 0.42);
+}
+.card-profondo:hover .btn-corona-svg .corona-fill {
+    fill: var(--ghelfi-gold);
+}
+.card-profondo:hover .btn-corona-svg .corona-ring {
+    stroke: var(--ghelfi-gold);
+}
+.card-profondo:hover .btn-corona-svg .corona-inner {
+    stroke: var(--ghelfi-black);
+    opacity: 1;
+}
+.card-profondo:hover .btn-corona-svg .corona-text {
+    fill: var(--ghelfi-black);
+}
+
+/* Hover MATE */
+.card-mate:hover .btn-corona-svg .corona-shadow-ring {
+    stroke: rgba(225, 207, 146, 0.42);
+}
+.card-mate:hover .btn-corona-svg .corona-fill {
+    fill: var(--ghelfi-gold);
+}
+.card-mate:hover .btn-corona-svg .corona-ring {
+    stroke: var(--ghelfi-gold);
+}
+.card-mate:hover .btn-corona-svg .corona-inner {
+    stroke: var(--ghelfi-red);
+    opacity: 1;
+}
+.card-mate:hover .btn-corona-svg .corona-text {
+    fill: var(--ghelfi-red);
+}
+
+/* TAPPO A VITE */
+.btn-vite {
+    position: relative;
+    width: 104px;
+    height: 138px;
+    border: 2px solid var(--ghelfi-gold);
+    border-radius: 18px 18px 8px 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.35s ease;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.10);
+}
+
+.btn-vite::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    right: 12px;
+    height: 18px;
+    border-top: 2px solid var(--ghelfi-gold);
+    border-bottom: 2px solid var(--ghelfi-gold);
+    transition: border-color 0.35s ease;
+}
+
+.btn-vite span {
+    position: relative;
+    z-index: 2;
+    color: var(--ghelfi-gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    transition: color 0.35s ease;
+}
+
+.card-elisir:hover .btn-vite {
+    background: var(--ghelfi-gold);
+    box-shadow: 0 16px 35px rgba(0,0,0,0.16);
+}
+
+.card-elisir:hover .btn-vite span {
+    color: var(--ghelfi-green);
+}
+
+.card-elisir:hover .btn-vite::before {
+    border-color: var(--ghelfi-green);
+}
+
+/* DESKTOP */
+@media (min-width: 992px) {
+    .product-card {
+        width: 25%;
+        height: 100vh;
     }
 }
 
-/* touch/mobile: niente movimento per evitare la riga tra le card */
-@media (hover: none), (pointer: coarse) {
-    .product-card:hover {
-        transform: none;
+/* LAPTOP STRETTI / 13" */
+@media (min-width: 992px) and (max-width: 1440px) {
+    .card-content {
+        padding: 0 16px;
+    }
+
+    .card-content h2 {
+        font-size: clamp(2rem, 3.5vw, 3.2rem);
+        letter-spacing: 1px;
+        max-width: 96%;
+    }
+
+    .card-logo {
+        width: 58px;
+        margin-bottom: 10px;
+    }
+
+    .card-brand {
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        font-size: 0.82rem;
+        letter-spacing: 2px;
+    }
+
+    .btn-wrapper {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 18px;
+    }
+
+    .btn-corona-svg {
+        width: 132px;
+        height: 132px;
+    }
+
+    .btn-vite {
+        width: 92px;
+        height: 126px;
     }
 }
 
-        .card-content {
-            width: 100%;
-            padding: 0 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 2;
-        }
+/* MOBILE E TABLET */
+@media (max-width: 991.98px) {
+    .product-card {
+        height: 72vh;
+    }
 
-        .card-logo {
-            width: 68px;
-            height: auto;
-            margin-bottom: 12px;
-            opacity: 0.92;
-        }
+    .card-content h2 {
+        font-size: clamp(2.4rem, 12vw, 4rem);
+        letter-spacing: 2px;
+        max-width: 100%;
+    }
 
-        .card-brand {
-            color: rgba(255,255,255,0.82);
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            font-size: 0.8rem;
-            margin-bottom: 12px;
-        }
+    .btn-wrapper {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 18px;
+    }
 
-        .card-content h2 {
-            color: var(--ghelfi-gold);
-            font-size: clamp(2.2rem, 4.1vw, 3.9rem);
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-            line-height: 0.95;
-            text-align: center;
-            max-width: 92%;
-            text-wrap: balance;
-        }
+    .btn-corona-svg {
+        width: 132px;
+        height: 132px;
+    }
 
-        .subtitle {
-            color: rgba(255,255,255,0.92);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            margin-bottom: 38px;
-        }
-        
+    .btn-vite {
+        width: 92px;
+        height: 124px;
+    }
 
-        .evocative {
-            max-width: 240px;
-            font-size: 0.96rem;
-            color: rgba(255,255,255,0.9);
-            font-style: italic;
-            line-height: 1.45;
-            letter-spacing: 0.4px;
-        }
+    .evocative {
+        font-size: 0.9rem;
+        max-width: 260px;
+    }
+}
 
-        @media (min-width: 992px) {
-            .product-card {
-                width: 25%;
-                height: 100vh;
-            }
-        }
+/* FOOTER */
+.footer-main {
+    padding: 90px 20px 70px;
+    text-align: center;
+    background: var(--ghelfi-cream);
+}
 
-        @media (min-width: 992px) and (max-width: 1440px) {
-            .card-content {
-                padding: 0 16px;
-            }
-        
-            .card-content h2 {
-                font-size: clamp(2rem, 3.5vw, 3.2rem);
-                letter-spacing: 1px;
-                max-width: 96%;
-            }
-        
-            .card-logo {
-                width: 58px;
-                margin-bottom: 10px;
-            }
-        
-            .card-brand {
-                font-size: 0.72rem;
-                letter-spacing: 3px;
-                margin-bottom: 10px;
-            }
-        
-            .subtitle {
-                font-size: 0.82rem;
-                letter-spacing: 2px;
-            }
-        
-            .btn-wrapper {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 18px;
-            }
-        
-            .btn-corona-svg {
-                width: 132px;
-                height: 132px;
-            }
-        
-            .btn-vite {
-                width: 92px;
-                height: 126px;
-            }
-        }
-    /*Correzione mobile vera*/
-        @media (max-width: 991.98px) {
-            .product-card {
-                height: 72vh;
-            }
-        
-            .card-content h2 {
-                font-size: clamp(2.4rem, 12vw, 4rem);
-                letter-spacing: 2px;
-                max-width: 100%;
-            }
-        
-            .btn-wrapper {
-                width: 150px;
-                height: 150px;
-                margin-bottom: 18px;
-            }
-        
-            .btn-corona-svg {
-                width: 132px;
-                height: 132px;
-            }
-        
-            .btn-vite {
-                width: 92px;
-                height: 124px;
-            }
-        
-            .evocative {
-                font-size: 0.9rem;
-                max-width: 260px;
-            }
-        }
-        
-        /* BOTTONI */
-        .btn-wrapper {
-            width: 170px;
-            height: 170px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 22px;
-            animation: artisanMove 5s ease-in-out infinite;
-        }
+.footer-logo-facit {
+    width: 110px;
+    margin-bottom: 20px;
+}
 
-        @keyframes artisanMove {
-            0%, 100% { transform: rotate(-4deg); }
-            50% { transform: rotate(4deg); }
-        }
+.footer-copy {
+    max-width: 560px;
+    margin: 20px auto 0;
+    color: #666;
+    line-height: 1.75;
+    font-weight: 300;
+}
 
-        /* TAPPO A CORONA SVG */
-        .btn-corona-svg {
-            width: 150px;
-            height: 150px;
-            transition: transform 0.35s ease, filter 0.35s ease;
-            filter: drop-shadow(0 8px 18px rgba(0,0,0,0.10));
-            overflow: visible;
-        }
+.social-links {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
 
-        /* Denti sempre oro */
-        .btn-corona-svg .tooth,
-        .btn-corona-svg use {
-            fill: var(--ghelfi-gold);
-        }
+.social-links a {
+    color: var(--ghelfi-black);
+    font-size: 1.6rem;
+    transition: color 0.25s ease;
+}
 
-        .btn-corona-svg .corona-fill {
-            fill: transparent;
-            transition: fill 0.35s ease;
-        }
+.social-links a:hover {
+    color: var(--ghelfi-gold);
+}
 
-        .btn-corona-svg .corona-ring {
-            fill: none;
-            stroke: var(--ghelfi-gold);
-            stroke-width: 2;
-            transition: stroke 0.35s ease;
-        }
+.footer-bottom {
+    background: #000;
+    color: #666;
+    padding: 30px 20px;
+    font-size: 0.75rem;
+    text-align: center;
+    letter-spacing: 1px;
+}
 
-        .btn-corona-svg .corona-inner {
-            fill: none;
-            stroke: var(--ghelfi-gold);
-            stroke-width: 1.4;
-            stroke-dasharray: 2.4 2.4;
-            opacity: 0.9;
-            transition: stroke 0.35s ease, opacity 0.35s ease;
-        }
+.footer-bottom a {
+    color: #444;
+}
 
-        .btn-corona-svg .corona-text {
-            fill: var(--ghelfi-gold);
-            font-size: 7px;
-            text-anchor: middle;
-            letter-spacing: 1.5px;
-            font-family: 'EB Garamond', serif;
-            transition: fill 0.35s ease;
-        }
-
-        /* Hover ORIGINE */
-        .card-origine:hover .btn-corona-svg .corona-fill {
-            fill: var(--ghelfi-gold);
-        }
-        .card-origine:hover .btn-corona-svg .corona-ring {
-            stroke: var(--ghelfi-gold);
-        }
-        .card-origine:hover .btn-corona-svg .corona-inner {
-            stroke: var(--ghelfi-blue);
-            opacity: 1;
-        }
-        .card-origine:hover .btn-corona-svg .corona-text {
-            fill: var(--ghelfi-blue);
-        }
-
-        /* Hover PROFONDO */
-        .card-profondo:hover .btn-corona-svg .corona-fill {
-            fill: var(--ghelfi-gold);
-        }
-        .card-profondo:hover .btn-corona-svg .corona-ring {
-            stroke: var(--ghelfi-gold);
-        }
-        .card-profondo:hover .btn-corona-svg .corona-inner {
-            stroke: var(--ghelfi-black);
-            opacity: 1;
-        }
-        .card-profondo:hover .btn-corona-svg .corona-text {
-            fill: var(--ghelfi-black);
-        }
-
-        /* Hover MATE */
-        .card-mate:hover .btn-corona-svg .corona-fill {
-            fill: var(--ghelfi-gold);
-        }
-        .card-mate:hover .btn-corona-svg .corona-ring {
-            stroke: var(--ghelfi-gold);
-        }
-        .card-mate:hover .btn-corona-svg .corona-inner {
-            stroke: var(--ghelfi-red);
-            opacity: 1;
-        }
-        .card-mate:hover .btn-corona-svg .corona-text {
-            fill: var(--ghelfi-red);
-        }
-
-        /* TAPPO A VITE */
-        .btn-vite {
-            position: relative;
-            width: 104px;
-            height: 138px;
-            border: 2px solid var(--ghelfi-gold);
-            border-radius: 18px 18px 8px 8px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.35s ease;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.10);
-        }
-
-        .btn-vite::before {
-            content: "";
-            position: absolute;
-            top: 14px;
-            left: 12px;
-            right: 12px;
-            height: 18px;
-            border-top: 2px solid var(--ghelfi-gold);
-            border-bottom: 2px solid var(--ghelfi-gold);
-            transition: border-color 0.35s ease;
-        }
-
-        /* niente righe verticali sotto SVITA */
-
-        .btn-vite span {
-            position: relative;
-            z-index: 2;
-            color: var(--ghelfi-gold);
-            font-size: 1rem;
-            letter-spacing: 2px;
-            transition: color 0.35s ease;
-        }
-
-        .card-elisir:hover .btn-vite {
-            background: var(--ghelfi-gold);
-            box-shadow: 0 16px 35px rgba(0,0,0,0.16);
-        }
-
-        .card-elisir:hover .btn-vite span {
-            color: var(--ghelfi-green);
-        }
-
-        .card-elisir:hover .btn-vite::before {
-            border-color: var(--ghelfi-green);
-        }
-
-        /* FOOTER */
-        .footer-main {
-            padding: 90px 20px 70px;
-            text-align: center;
-            background: var(--ghelfi-cream);
-        }
-
-        .footer-logo-facit {
-            width: 110px;
-            margin-bottom: 20px;
-        }
-
-        .footer-copy {
-            max-width: 560px;
-            margin: 20px auto 0;
-            color: #666;
-            line-height: 1.75;
-            font-weight: 300;
-        }
-
-        .social-links {
-            margin-top: 24px;
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-        }
-
-        .social-links a {
-            color: var(--ghelfi-black);
-            font-size: 1.6rem;
-            transition: color 0.25s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--ghelfi-gold);
-        }
-
-        .footer-bottom {
-            background: #000;
-            color: #666;
-            padding: 30px 20px;
-            font-size: 0.75rem;
-            text-align: center;
-            letter-spacing: 1px;
-        }
-
-        .footer-bottom a {
-            color: #444;
-        }
-
-        .footer-bottom a:hover {
-            color: var(--ghelfi-gold);
-        }
+.footer-bottom a:hover {
+    color: var(--ghelfi-gold);
+}
     </style>
 </head>
 <body>
@@ -720,6 +723,7 @@
                             <use href="#tooth-shape-o" class="tooth" transform="rotate(325.714285)"></use>
                             <use href="#tooth-shape-o" class="tooth" transform="rotate(342.857142)"></use>
 
+                            <circle r="42" class="corona-shadow-ring"></circle>
                             <circle r="34" class="corona-fill"></circle>
                             <circle r="38" class="corona-ring"></circle>
                             <circle r="28" class="corona-inner"></circle>
@@ -768,6 +772,7 @@
                             <use href="#tooth-shape-p" class="tooth" transform="rotate(325.714285)"></use>
                             <use href="#tooth-shape-p" class="tooth" transform="rotate(342.857142)"></use>
 
+                            <circle r="42" class="corona-shadow-ring"></circle>
                             <circle r="34" class="corona-fill"></circle>
                             <circle r="38" class="corona-ring"></circle>
                             <circle r="28" class="corona-inner"></circle>
@@ -816,6 +821,7 @@
                             <use href="#tooth-shape-m" class="tooth" transform="rotate(325.714285)"></use>
                             <use href="#tooth-shape-m" class="tooth" transform="rotate(342.857142)"></use>
 
+                            <circle r="42" class="corona-shadow-ring"></circle>
                             <circle r="34" class="corona-fill"></circle>
                             <circle r="38" class="corona-ring"></circle>
                             <circle r="28" class="corona-inner"></circle>
