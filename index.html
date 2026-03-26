@@ -238,21 +238,33 @@
             flex-wrap: wrap;
         }
 
-        .product-card {
-            width: 100%;
-            height: 88vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.35s ease;
-        }
+      .product-card {
+    width: 100%;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, filter 0.35s ease;
+    will-change: transform;
+}
 
-        .product-card:hover {
-            transform: translateY(-4px);
-        }
+/* desktop: niente salita, solo micro-zoom morbido */
+@media (hover: hover) and (pointer: fine) {
+    .product-card:hover {
+        transform: scale(1.015);
+        z-index: 3;
+    }
+}
+
+/* touch/mobile: niente movimento per evitare la riga tra le card */
+@media (hover: none), (pointer: coarse) {
+    .product-card:hover {
+        transform: none;
+    }
+}
 
         .card-content {
             width: 100%;
