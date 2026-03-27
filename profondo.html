@@ -7,20 +7,36 @@
 
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         :root {
+            --ghelfi-blue: #5B7D8E;
+            --ghelfi-red: #C1444E;
             --ghelfi-black: #1A1A1A;
+            --ghelfi-green: #3E5B44;
             --ghelfi-gold: #E1CF92;
             --ghelfi-cream: #F5F5DC;
+            --ghelfi-white: #F8F6EF;
+            --ghelfi-text-soft: rgba(255,255,255,0.82);
+            --ghelfi-dark-soft: rgba(26,26,26,0.78);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
             margin: 0;
             font-family: 'Montserrat', sans-serif;
             background: var(--ghelfi-cream);
-            color: #1a1a1a;
+            color: var(--ghelfi-black);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
         }
 
         .marion {
@@ -33,237 +49,755 @@
             font-style: italic;
         }
 
+        /* MENU */
+        .fs-menu {
+            position: fixed;
+            inset: 0;
+            background: rgba(245, 245, 220, 0.98);
+            backdrop-filter: blur(6px);
+            z-index: 3000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .menu-exit {
+            position: absolute;
+            top: 36px;
+            width: 78px;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-exit:hover {
+            transform: rotate(-180deg);
+        }
+
+        .fs-menu a {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(2rem, 8vw, 4rem);
+            color: var(--ghelfi-gold);
+            font-weight: 700;
+            margin: 10px 0;
+            transition: color 0.25s ease;
+        }
+
+        .fs-menu a:hover {
+            color: var(--ghelfi-black);
+        }
+
+        /* TOPBAR */
+        .topbar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 24px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .menu-trigger {
+            width: 86px;
+            cursor: pointer;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-trigger:hover {
+            transform: scale(1.08) rotate(144deg);
+        }
+
+        .back-link {
+            color: rgba(255,255,255,0.88);
+            font-size: 0.88rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .back-link:hover {
+            color: var(--ghelfi-gold);
+        }
+
         /* HERO */
-        .hero {
+        .product-hero {
             min-height: 100vh;
             background: var(--ghelfi-black);
             color: white;
             display: flex;
             align-items: center;
-            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 18% 22%, rgba(225,207,146,0.08), transparent 34%),
+                radial-gradient(circle at 82% 74%, rgba(255,255,255,0.03), transparent 38%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            padding: 120px 0 80px;
         }
 
         .hero-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 48px;
             align-items: center;
         }
 
-        .hero-title {
-            font-size: clamp(3rem, 7vw, 6rem);
-            color: var(--ghelfi-gold);
-            line-height: 0.9;
+        .hero-copy {
+            padding: 0 12px;
         }
 
-        .hero-sub {
-            letter-spacing: 3px;
+        .hero-logo {
+            width: 88px;
+            height: auto;
+            margin-bottom: 18px;
+            opacity: 0.95;
+        }
+
+        .hero-brand {
+            color: rgba(255,255,255,0.86);
+            letter-spacing: 4px;
+            font-size: 0.82rem;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            color: var(--ghelfi-gold);
+            font-size: clamp(3rem, 8vw, 6.2rem);
+            line-height: 0.92;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .hero-subtitle {
+            color: rgba(255,255,255,0.92);
             text-transform: uppercase;
-            margin-bottom: 20px;
+            letter-spacing: 3px;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .hero-origin-name {
+            color: rgba(255,255,255,0.78);
+            font-size: 1.15rem;
+            margin-bottom: 28px;
         }
 
         .hero-claim {
-            font-size: 1.6rem;
-            margin: 20px 0;
+            color: rgba(255,255,255,0.96);
+            font-size: clamp(1.35rem, 2.2vw, 2rem);
+            line-height: 1.2;
+            max-width: 560px;
+            margin-bottom: 18px;
         }
 
         .hero-desc {
-            opacity: 0.8;
+            max-width: 590px;
+            color: rgba(255,255,255,0.82);
             line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 30px;
         }
 
-        .bottle {
-            max-width: 400px;
-            width: 100%;
-            display: block;
-            margin: auto;
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .meta-pill {
+            border: 1px solid rgba(225,207,146,0.58);
+            color: var(--ghelfi-gold);
+            padding: 10px 14px;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .hero-bottle-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 620px;
+        }
+
+        .hero-bottle {
+            width: min(100%, 420px);
+            max-height: 78vh;
+            object-fit: contain;
+            filter: drop-shadow(0 20px 45px rgba(0,0,0,0.32));
         }
 
         /* SECTIONS */
-        .section {
-            padding: 100px 20px;
+        .section-light {
+            background: var(--ghelfi-cream);
+            color: var(--ghelfi-black);
         }
 
-        .section-title {
-            font-family: 'EB Garamond', serif;
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+        .section-white {
+            background: white;
+            color: var(--ghelfi-black);
         }
 
-        .section-text {
-            max-width: 700px;
-            line-height: 1.9;
-            font-weight: 300;
-        }
-
-        .dark {
+        .section-dark {
             background: #111;
             color: white;
         }
 
-        .dark .section-text {
-            opacity: 0.85;
+        .content-section {
+            padding: 110px 0;
         }
 
-        /* GRID */
-        .grid {
+        .section-kicker {
+            color: var(--ghelfi-gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.82rem;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'EB Garamond', serif;
+            text-transform: uppercase;
+            font-size: clamp(2rem, 4vw, 3.4rem);
+            letter-spacing: 2px;
+            line-height: 0.98;
+            margin-bottom: 20px;
+        }
+
+        .section-text {
+            max-width: 760px;
+            line-height: 1.9;
+            font-weight: 300;
+            color: var(--ghelfi-dark-soft);
+        }
+
+        .section-dark .section-text,
+        .section-dark .detail-card p,
+        .section-dark .detail-value,
+        .section-dark .detail-label,
+        .section-dark .fact-text {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* STORY */
+        .story-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 44px;
+            align-items: start;
+        }
+
+        .story-quote {
+            padding: 28px 32px;
+            border: 1px solid rgba(225,207,146,0.5);
+            background: rgba(255,255,255,0.38);
+        }
+
+        .story-quote p {
+            margin: 0;
+            font-size: 1.35rem;
+            line-height: 1.35;
+            color: #2b2b2b;
+        }
+
+        /* DETAILS GRID */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 10px;
+        }
+
+        .detail-card {
+            border: 1px solid rgba(225,207,146,0.5);
+            background: rgba(255,255,255,0.5);
+            padding: 28px;
+            min-height: 100%;
+        }
+
+        .section-dark .detail-card {
+            background: rgba(255,255,255,0.04);
+            border-color: rgba(225,207,146,0.32);
+        }
+
+        .detail-label {
+            color: var(--ghelfi-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.78rem;
+            margin-bottom: 14px;
+        }
+
+        .detail-value {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.4rem;
+            line-height: 1.35;
+            margin-bottom: 10px;
+        }
+
+        .detail-card p {
+            margin: 0;
+            line-height: 1.8;
+            font-weight: 300;
+            color: var(--ghelfi-dark-soft);
+        }
+
+        /* FACT STRIP */
+        .fact-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
             margin-top: 40px;
         }
 
-        .card {
-            border: 1px solid rgba(225,207,146,0.3);
-            padding: 30px;
+        .fact-box {
+            border-top: 1px solid rgba(225,207,146,0.55);
+            padding-top: 18px;
         }
 
-        .label {
+        .fact-label {
             color: var(--ghelfi-gold);
+            text-transform: uppercase;
             letter-spacing: 2px;
-            font-size: 0.8rem;
-            margin-bottom: 10px;
+            font-size: 0.72rem;
+            margin-bottom: 8px;
         }
 
-        .value {
-            font-family: 'EB Garamond', serif;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+        .fact-text {
+            line-height: 1.6;
+            font-weight: 400;
+            color: var(--ghelfi-dark-soft);
+        }
+
+        /* SERVICE */
+        .service-box {
+            max-width: 920px;
+            border: 1px solid rgba(225,207,146,0.45);
+            padding: 34px;
+            background: rgba(255,255,255,0.42);
+        }
+
+        .service-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* BACK CTA */
+        .back-section {
+            text-align: center;
+            padding: 90px 20px;
+            background: white;
+            border-top: 1px solid rgba(225,207,146,0.35);
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--ghelfi-gold);
+            color: var(--ghelfi-gold);
+            padding: 14px 22px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: all 0.25s ease;
+        }
+
+        .back-button:hover {
+            background: var(--ghelfi-gold);
+            color: var(--ghelfi-black);
+        }
+
+        /* FOOTER */
+        .footer-main {
+            padding: 80px 20px 64px;
+            text-align: center;
+            background: var(--ghelfi-cream);
+        }
+
+        .footer-logo-facit {
+            width: 104px;
+            margin-bottom: 18px;
+        }
+
+        .footer-copy {
+            max-width: 560px;
+            margin: 18px auto 0;
+            color: #666;
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .social-links {
+            margin-top: 24px;
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        .social-links a {
+            color: var(--ghelfi-black);
+            font-size: 1.5rem;
+            transition: color 0.25s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--ghelfi-gold);
+        }
+
+        .footer-bottom {
+            background: #000;
+            color: #666;
+            padding: 28px 20px;
+            font-size: 0.75rem;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .footer-bottom a {
+            color: #444;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--ghelfi-gold);
         }
 
         /* RESPONSIVE */
-        @media (max-width: 900px) {
+        @media (max-width: 991.98px) {
             .hero-grid,
-            .grid {
+            .story-grid,
+            .details-grid,
+            .fact-strip {
                 grid-template-columns: 1fr;
+            }
+
+            .hero-inner {
+                padding: 110px 0 72px;
+            }
+
+            .hero-bottle-wrap {
+                min-height: auto;
+                padding-top: 20px;
+            }
+
+            .hero-bottle {
+                width: min(82vw, 340px);
+                max-height: 62vh;
+            }
+
+            .topbar {
+                padding: 18px 18px 0;
+            }
+
+            .menu-trigger {
+                width: 72px;
+            }
+
+            .content-section {
+                padding: 82px 0;
+            }
+
+            .service-box,
+            .story-quote,
+            .detail-card {
+                padding: 24px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container hero-grid">
+    <div class="fs-menu" id="fsMenu">
+        <img src="assets/stella.svg" class="menu-exit" onclick="toggleMenu()" alt="Chiudi">
+        <a href="index.html">Home</a>
+        <a href="classica.html">Origine</a>
+        <a href="special.html">Profondo</a>
+        <a href="mate.html">Mate</a>
+        <a href="aceto.html">Elisir</a>
+    </div>
 
-            <div>
-                <div class="marion" style="letter-spacing:4px;">Ghelfi</div>
+    <section class="product-hero">
+        <div class="topbar">
+            <img src="assets/stella.svg" class="menu-trigger" onclick="toggleMenu()" alt="Menu">
+            <a href="index.html" class="back-link">← Collezione</a>
+        </div>
 
-                <h1 class="hero-title marion">PROFONDO</h1>
-                <div class="hero-sub">Kombucha</div>
+        <div class="container hero-inner">
+            <div class="hero-grid">
+                <div class="hero-copy">
+                    <img src="assets/logo.svg" class="hero-logo" alt="Logo Ghelfi">
+                    <div class="hero-brand marion">Ghelfi</div>
 
-                <p class="hero-claim serif-italic">
-                    Più lento. Più denso.
+                    <h1 class="hero-title marion">PROFONDO</h1>
+                    <div class="hero-subtitle">Kombucha</div>
+                    <div class="hero-origin-name serif-italic">Fermentazione estesa</div>
+
+                    <p class="hero-claim serif-italic">
+                        Più lento. Più denso.
+                    </p>
+
+                    <p class="hero-desc">
+                        Profondo nasce quando la fermentazione viene lasciata andare oltre
+                        la soglia dell’essenziale. La materia si raccoglie, si stratifica,
+                        si amplia. Il risultato è un profilo più scuro, più lento,
+                        più disteso, costruito sulla persistenza.
+                    </p>
+
+                    <div class="hero-meta">
+                        <span class="meta-pill">75 cl</span>
+                        <span class="meta-pill">Seconda fermentazione in bottiglia</span>
+                        <span class="meta-pill">Profilo evoluto</span>
+                        <span class="meta-pill">Servire in calice</span>
+                    </div>
+                </div>
+
+                <div class="hero-bottle-wrap">
+                    <img src="assets/profondo-bottle.png" class="hero-bottle" alt="Bottiglia Ghelfi Profondo">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section section-light">
+        <div class="container">
+            <div class="story-grid">
+                <div>
+                    <div class="section-kicker">Tempo</div>
+                    <h2 class="section-title">Quando la fermentazione si approfondisce</h2>
+                    <p class="section-text">
+                        Profondo non nasce da una materia diversa, ma da una scelta di tempo.
+                        Laddove Origine ricerca tensione e precisione, qui la fermentazione
+                        prosegue più a lungo e accompagna il profilo verso una dimensione più ampia.
+                    </p>
+                    <p class="section-text">
+                        Il risultato è una lettura più stratificata del tè nero:
+                        meno luminosa, più raccolta, con una presenza gustativa più estesa
+                        e una sensazione di maggiore densità al palato.
+                    </p>
+                </div>
+
+                <div class="story-quote">
+                    <p class="serif-italic">
+                        Non cerca immediatezza. Cerca durata, profondità, permanenza.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section section-white">
+        <div class="container">
+            <div class="section-kicker">Materia</div>
+            <h2 class="section-title">La stessa origine, una diversa estensione</h2>
+
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Tè</div>
+                    <div class="detail-value">Pregiato tè nero Ceylon delle alte montagne dello Sri Lanka</div>
+                    <p>
+                        Una base tannica nobile, capace di sostenere un tempo di fermentazione
+                        più lungo senza perdere coerenza e precisione.
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-label">Zucchero</div>
+                    <div class="detail-value">Zucchero di barbabietola</div>
+                    <p>
+                        Pulito, essenziale, pensato per accompagnare il processo senza
+                        introdurre deviazioni aromatiche.
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-label">Acqua</div>
+                    <div class="detail-value">Acqua come supporto neutro e vitale</div>
+                    <p>
+                        Una presenza silenziosa che lascia emergere la relazione tra
+                        materia prima e coltura viva.
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-label">Coltura</div>
+                    <div class="detail-value">Colture simbiotiche di batteri e lieviti</div>
+                    <p>
+                        Il nucleo attivo del processo: struttura, trasformazione,
+                        estensione aromatica e profondità gustativa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section section-dark">
+        <div class="container">
+            <div class="section-kicker">Profilo</div>
+            <h2 class="section-title">Note sensoriali</h2>
+
+            <div class="details-grid">
+                <div class="detail-card">
+                    <div class="detail-label">Struttura</div>
+                    <div class="detail-value">Più ampia, più raccolta</div>
+                    <p>
+                        Una materia che si distende e acquista profondità senza perdere definizione.
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-label">Profilo</div>
+                    <div class="detail-value">Evoluto e stratificato</div>
+                    <p>
+                        Il fermento lavora in profondità e accompagna il tè verso una maggiore complessità.
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-label">Acidità</div>
+                    <div class="detail-value">Integrata, meno esposta</div>
+                    <p>
+                        Non domina il sorso: lo sostiene e ne prolunga il movimento.
+                    </p>
+                </div>
+
+                <div class="detail-card">
+                    <div class="detail-label">Finale</div>
+                    <div class="detail-value">Lungo, asciutto, persistente</div>
+                    <p>
+                        Una chiusura più ampia, meno verticale, costruita sulla permanenza.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section section-light">
+        <div class="container">
+            <div class="section-kicker">Metodo</div>
+            <h2 class="section-title">Una fermentazione più estesa</h2>
+            <p class="section-text">
+                Profondo è una bevanda analcolica naturalmente frizzante ottenuta attraverso
+                fermentazione lenta e seconda fermentazione controllata in bottiglia.
+            </p>
+            <p class="section-text">
+                Il tempo supplementare modifica la percezione complessiva del profilo:
+                la pressione resta fine, il perlage continuo, ma la struttura si fa più ampia,
+                più matura, più avvolgente.
+            </p>
+
+            <div class="fact-strip">
+                <div class="fact-box">
+                    <div class="fact-label">Formato</div>
+                    <div class="fact-text">75 cl</div>
+                </div>
+                <div class="fact-box">
+                    <div class="fact-label">Bottiglia</div>
+                    <div class="fact-text">Emiliana, ideale per F2</div>
+                </div>
+                <div class="fact-box">
+                    <div class="fact-label">Stile</div>
+                    <div class="fact-text">Fermentazione estesa</div>
+                </div>
+                <div class="fact-box">
+                    <div class="fact-label">Servizio</div>
+                    <div class="fact-text">Ben fredda, in calice</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section section-white">
+        <div class="container">
+            <div class="section-kicker">Integrità</div>
+            <h2 class="section-title">Prodotto vivo, non filtrato</h2>
+            <p class="section-text">
+                L’eventuale presenza di sedimenti naturali testimonia la vitalità del fermento madre.
+                In Profondo, questa presenza accompagna una lettura ancora più piena della fermentazione.
+            </p>
+        </div>
+    </section>
+
+    <section class="content-section section-light">
+        <div class="container">
+            <div class="section-kicker">Servizio</div>
+            <h2 class="section-title">Conservazione e apertura</h2>
+
+            <div class="service-box">
+                <p class="section-text">
+                    Conservare in frigorifero a temperatura ≤ 3°C.
                 </p>
-
-                <p class="hero-desc">
-                    Profondo nasce da una fermentazione più lunga, in cui la materia si raccoglie,
-                    si stratifica e sviluppa una dimensione più ampia e complessa.
-                    Non cerca immediatezza, ma profondità.
+                <p class="section-text">
+                    Non agitare. Capovolgere delicatamente prima dell’apertura.
+                </p>
+                <p class="section-text">
+                    Servire ben fredda, preferibilmente in calice.
                 </p>
             </div>
-
-            <div>
-                <img src="assets/profondo-bottle.png" class="bottle" alt="Ghelfi Profondo">
-            </div>
-
         </div>
     </section>
 
-    <!-- STORIA -->
-    <section class="section">
-        <h2 class="section-title">Tempo e trasformazione</h2>
-        <p class="section-text">
-            Se Origine è tensione e verticalità, Profondo è espansione.
-            La fermentazione prosegue oltre il punto essenziale,
-            permettendo al profilo di evolvere verso una maggiore complessità aromatica.
-        </p>
-        <p class="section-text">
-            Il tempo non viene abbreviato: viene lasciato agire.
-            È qui che emergono densità, rotondità e una sensazione più ampia al palato.
-        </p>
+    <section class="back-section">
+        <a href="index.html#prodotti" class="back-button">
+            <span>←</span>
+            <span>Torna alla collezione</span>
+        </a>
     </section>
 
-    <!-- INGREDIENTI -->
-    <section class="section dark">
-        <h2 class="section-title">Materia</h2>
+    <footer id="contatti" class="footer-main">
+        <img src="assets/facit-in-mantua.png" class="footer-logo-facit" alt="Facit in Mantua">
+        <h3 class="serif-italic">Facit in Mantua</h3>
+        <p class="marion mt-3" style="color: var(--ghelfi-gold); letter-spacing: 3px;">Ghelfi Fermenta</p>
 
-        <div class="grid">
-            <div class="card">
-                <div class="label">Tè</div>
-                <div class="value">Tè nero Ceylon</div>
-                <p>Struttura più pronunciata e capacità evolutiva maggiore.</p>
-            </div>
+        <p class="footer-copy">
+            Una piccola produzione mantovana dedicata alla fermentazione come espressione di stile,
+            rigore e materia viva.
+        </p>
 
-            <div class="card">
-                <div class="label">Fermentazione</div>
-                <div class="value">Prolungata</div>
-                <p>Tempo esteso per ottenere maggiore profondità e complessità.</p>
-            </div>
+        <p class="text-muted small mt-3">
+            Mantova, Italia |
+            <a href="mailto:info@ghelfifermenta.it" class="text-muted">info@ghelfifermenta.it</a>
+        </p>
 
-            <div class="card">
-                <div class="label">Zucchero</div>
-                <div class="value">Barbabietola</div>
-                <p>Supporto pulito per una fermentazione completa.</p>
-            </div>
-
-            <div class="card">
-                <div class="label">Coltura</div>
-                <div class="value">Viva</div>
-                <p>Responsabile della struttura e dell’evoluzione aromatica.</p>
-            </div>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
-    </section>
+    </footer>
 
-    <!-- SENSORIALE -->
-    <section class="section">
-        <h2 class="section-title">Note sensoriali</h2>
-
-        <div class="grid">
-            <div class="card">
-                <div class="label">Struttura</div>
-                <div class="value">Più densa</div>
-                <p>Una trama più ampia, meno verticale.</p>
-            </div>
-
-            <div class="card">
-                <div class="label">Profilo</div>
-                <div class="value">Evoluto</div>
-                <p>Note più profonde e stratificate.</p>
-            </div>
-
-            <div class="card">
-                <div class="label">Acidità</div>
-                <div class="value">Integrata</div>
-                <p>Meno spinta, più fusa nella materia.</p>
-            </div>
-
-            <div class="card">
-                <div class="label">Finale</div>
-                <div class="value">Persistente</div>
-                <p>Chiusura lunga e avvolgente.</p>
-            </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p class="mb-1">© Copyright <span id="year-range">2025-2026</span> Ghelfi Fermenta</p>
+            <a href="https://grafichello.it">Partner web: grafichello.it</a>
         </div>
-    </section>
+    </div>
 
-    <!-- METODO -->
-    <section class="section dark">
-        <h2 class="section-title">Metodo</h2>
-        <p class="section-text">
-            Seconda fermentazione controllata in bottiglia per sviluppare una
-            pressione naturale e un perlage fine, integrato nella struttura.
-        </p>
-    </section>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('fsMenu');
+            const isOpen = menu.style.display === 'flex';
+            menu.style.display = isOpen ? 'none' : 'flex';
+            document.body.style.overflow = isOpen ? 'auto' : 'hidden';
+        }
 
-    <!-- SERVIZIO -->
-    <section class="section">
-        <h2 class="section-title">Servizio</h2>
-        <p class="section-text">
-            Conservare in frigorifero ≤ 3°C.  
-            Non agitare.  
-            Servire ben fredda, preferibilmente in calice.
-        </p>
-    </section>
-
+        const currentYear = new Date().getFullYear();
+        if (currentYear > 2026) {
+            document.getElementById('year-range').textContent = `2025-${currentYear}`;
+        }
+    </script>
 </body>
 </html>
