@@ -112,26 +112,17 @@
                 radial-gradient(circle at center, rgba(225, 207, 146, 0.12), transparent 60%);
         }
 
-        .menu-trigger {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            margin-bottom: 2px;
-            padding: 0;
-            background: transparent;
-            border: 0;
-            cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-            color: var(--ghelfi-gold);
-        }
+    
         
-        .menu-trigger-icon {
+        .menu-trigger {
             width: 80px;
-            display: block;
+            margin-bottom: 2px;
+            cursor: pointer;
             transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .menu-trigger:hover {
+            transform: scale(1.08) rotate(144deg);
         }
         
         .menu-trigger-label {
@@ -142,16 +133,6 @@
             color: var(--ghelfi-gold);
             opacity: 0.9;
             transition: opacity 0.25s ease;
-        }
-        
-        .menu-trigger:hover .menu-trigger-icon,
-        .menu-trigger:focus-visible .menu-trigger-icon {
-            transform: scale(1.08) rotate(144deg);
-        }
-        
-        .menu-trigger:hover .menu-trigger-label,
-        .menu-trigger:focus-visible .menu-trigger-label {
-            opacity: 1;
         }
         
         .menu-trigger:focus-visible {
@@ -169,17 +150,8 @@
                 letter-spacing: 0.16em;
             }
         }
-       /* .menu-trigger {
-            width: 120px;
-            margin-bottom: 26px;
-            cursor: pointer;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .menu-trigger:hover {
-            transform: scale(1.08) rotate(144deg);
-        }
-       */
+      
+       
         .logo-text {
             display: block;
             font-size: clamp(3.7rem, 13vw, 9rem);
