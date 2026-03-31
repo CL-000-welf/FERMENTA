@@ -721,5 +721,40 @@
             document.getElementById('year-range').textContent = `2025-${currentYear}`;
         }
     </script>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    const trigger = document.querySelector('.menu-trigger');
+    const menu = document.getElementById('fsMenu');
+
+    if (!trigger || !menu) return;
+
+    // crea label
+    const label = document.createElement('span');
+    label.className = 'menu-trigger-text';
+    trigger.parentNode.insertBefore(label, trigger.nextSibling);
+
+    function updateLabel() {
+        const isOpen = menu.classList.contains('open');
+        label.textContent = isOpen ? 'CHIUDI' : 'MENU';
+    }
+
+    // intercetta toggleMenu esistente
+    const originalToggleMenu = window.toggleMenu;
+
+    window.toggleMenu = function () {
+        if (typeof originalToggleMenu === 'function') {
+            originalToggleMenu();
+        }
+
+        // aggiorna subito dopo il toggle
+        requestAnimationFrame(updateLabel);
+    };
+
+    // iniziale
+    updateLabel();
+});
+</script>
+    
 </body>
 </html>
