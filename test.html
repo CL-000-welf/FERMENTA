@@ -113,6 +113,63 @@
         }
 
         .menu-trigger {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 2px;
+            padding: 0;
+            background: transparent;
+            border: 0;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            color: var(--ghelfi-gold);
+        }
+        
+        .menu-trigger-icon {
+            width: 80px;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .menu-trigger-label {
+            font-size: 0.68rem;
+            line-height: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.18em;
+            color: var(--ghelfi-gold);
+            opacity: 0.9;
+            transition: opacity 0.25s ease;
+        }
+        
+        .menu-trigger:hover .menu-trigger-icon,
+        .menu-trigger:focus-visible .menu-trigger-icon {
+            transform: scale(1.08) rotate(144deg);
+        }
+        
+        .menu-trigger:hover .menu-trigger-label,
+        .menu-trigger:focus-visible .menu-trigger-label {
+            opacity: 1;
+        }
+        
+        .menu-trigger:focus-visible {
+            outline: 1px solid rgba(176, 142, 68, 0.45);
+            outline-offset: 6px;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-trigger-icon {
+                width: 68px;
+            }
+        
+            .menu-trigger-label {
+                font-size: 0.62rem;
+                letter-spacing: 0.16em;
+            }
+        }
+       /* .menu-trigger {
             width: 120px;
             margin-bottom: 26px;
             cursor: pointer;
@@ -122,7 +179,7 @@
         .menu-trigger:hover {
             transform: scale(1.08) rotate(144deg);
         }
-
+       */
         .logo-text {
             display: block;
             font-size: clamp(3.7rem, 13vw, 9rem);
@@ -509,7 +566,13 @@
 
     <!-- MENU A TUTTO SCHERMO -->
     <div class="fs-menu" id="fsMenu">
-        <img src="assets/stella.svg" class="menu-exit" onclick="toggleMenu()" alt="Chiudi">
+       <!-- <img src="assets/stella.svg" class="menu-exit" onclick="toggleMenu()" alt="Chiudi"> -->
+
+        <button class="menu-trigger" type="button" onclick="toggleMenu()" aria-label="Apri il menu di navigazione">
+            <img src="assets/stella.svg" class="menu-trigger-icon" alt="">
+            <span class="menu-trigger-label">Menu</span>
+        </button>
+        
         <a href="index.html" class="link-home">Home</a>
         <a href="#prodotti" class="link-origine" onclick="toggleMenu()">Origine</a>
         <a href="#prodotti" class="link-profondo" onclick="toggleMenu()">Profondo</a>
