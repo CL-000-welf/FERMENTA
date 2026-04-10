@@ -1060,13 +1060,25 @@
     </script>
    <!-- Autoscroll -->
     <script> function autoScroll() {
-          window.scrollBy(0, 1);
-          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-          window.scrollTo(0, 0);
-          }
-          setTimeout(autoScroll, 60); // Regola il numero per la velocità
-          }
-          autoScroll();
+         (function() {
+    const headers = Array.from(document.querySelectorAll('h2'));
+    let index = 0;
+
+    if (headers.length === 0) {
+        console.error("Nessun H2 trovato nella pagina!");
+        return;
+    }
+
+    console.log("Auto-scroll avviato: " + headers.length + " sezioni trovate.");
+
+    setInterval(() => {
+        // Scorri alla sezione corrente in modo fluido
+        headers[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Incrementa l'indice o ricomincia da capo
+        index = (index + 1) % headers.length;
+    }, 5000); // 5000 millisecondi = 5 secondi
+})();
     </script>
 </body>
 </html>
