@@ -1061,33 +1061,48 @@
    <!-- Autoscroll -->
     <script> 
         (function() {
-        // Seleziona tutti i livelli di titolo richiesti
-        const headers = Array.from(document.querySelectorAll('h2, h3, h4, h5'))
-        .filter(h => h.innerText.trim().length > 0 && h.offsetHeight > 0); // Solo titoli visibili e con testo
+    const getHeaders = () => Array.from(document.querySelectorAll('h2, h3, h4, h5'))
+        .filter(h => h.innerText.trim().length > 0 && h.offsetHeight > 0);
 
-        let index = 0;
+    let headers = getHeaders();
+    let index = 0;
+    let scrollInterval;
 
-        if (headers.length === 0) {
-        console.error("Nessun titolo h2, h3, h4 o h5 trovato!");
-        return;
+    const startScrolling = () => {
+        // Reset: riporta la pagina in cima quando la scheda si attiva
+        window.scrollTo({top: 0, behavior: 'instant'});
+        index = 0;
+        
+        console.log("Scheda attiva: avvio sequenza su " + headers.length + " elementi.");
+        
+        scrollInterval = setInterval(() => {
+            headers = getHeaders(); // Ricarica se la pagina è dinamica
+            if (headers[index]) {
+                const yOffset = -120;
+                const y = headers[index].getBoundingClientRect().top + window.pageYOffset + yOffset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+                index = (index + 1) % headers.length;
+            }
+        }, 5000);
+    };
+
+    const stopScrolling = () => {
+        console.log("Scheda in background: pausa scroll.");
+        clearInterval(scrollInterval);
+    };
+
+    // Gestione della visibilità della finestra
+    document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+            stopScrolling();
+        } else {
+            startScrolling();
         }
+    });
 
-        console.log("Modalità Esposizione Attiva: trovate " + headers.length + " sezioni.");
-
-        setInterval(() => {
-        // Offset di 120px per evitare che la barra del menu (header fisso) copra il titolo
-        const yOffset = -120; 
-        const elementRect = headers[index].getBoundingClientRect().top;
-        const y = elementRect + window.pageYOffset + yOffset;
-
-        window.scrollTo({top: y, behavior: 'smooth'});
-
-        // Feedback in console per monitorare cosa sta inquadrando
-        console.log("Inquadro sezione " + (index + 1) + "/" + headers.length + ": " + headers[index].innerText);
-
-        index = (index + 1) % headers.length;
-        }, 5000); 
-        })();
+    // Avvio immediato se la scheda è già visibile
+    if (!document.hidden) startScrolling();
+})();
     </script>
 </body>
 </html>
