@@ -936,5 +936,37 @@
             document.getElementById('year-range').textContent = `2025-${currentYear}`;
         }
     </script>
+    <!-- Autoscroll -->
+    <script> 
+        (function() {
+        // Seleziona tutti i livelli di titolo richiesti
+        const headers = Array.from(document.querySelectorAll('h2, h3, h4, h5'))
+        .filter(h => h.innerText.trim().length > 0 && h.offsetHeight > 0); // Solo titoli visibili e con testo
+
+        let index = 0;
+
+        if (headers.length === 0) {
+        console.error("Nessun titolo h2, h3, h4 o h5 trovato!");
+        return;
+        }
+
+        console.log("Modalità Esposizione Attiva: trovate " + headers.length + " sezioni.");
+
+        setInterval(() => {
+        // Offset di 120px per evitare che la barra del menu (header fisso) copra il titolo
+        const yOffset = -120; 
+        const elementRect = headers[index].getBoundingClientRect().top;
+        const y = elementRect + window.pageYOffset + yOffset;
+
+        window.scrollTo({top: y, behavior: 'smooth'});
+
+        // Feedback in console per monitorare cosa sta inquadrando
+        console.log("Inquadro sezione " + (index + 1) + "/" + headers.length + ": " + headers[index].innerText);
+
+        index = (index + 1) % headers.length;
+        }, 5000); 
+        })();
+    </script>
+
 </body>
 </html>
