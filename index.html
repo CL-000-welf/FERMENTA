@@ -1059,25 +1059,28 @@
         }
     </script>
    <!-- Autoscroll -->
-    <script> function autoScroll() {
-         (function() {
-    const headers = Array.from(document.querySelectorAll('h2'));
+    <script> (function() {
+    // Seleziona H1, H2 e H3 per non perdere nessuna sezione importante
+    const headers = Array.from(document.querySelectorAll('h1, h2, h3')).filter(h => h.innerText.trim().length > 0);
     let index = 0;
 
     if (headers.length === 0) {
-        console.error("Nessun H2 trovato nella pagina!");
+        console.error("Nessun titolo trovato!");
         return;
     }
 
-    console.log("Auto-scroll avviato: " + headers.length + " sezioni trovate.");
+    console.log("Degustazione avviata: scorro tra " + headers.length + " sezioni.");
 
     setInterval(() => {
-        // Scorri alla sezione corrente in modo fluido
-        headers[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Scorri con un offset di 100px per non far finire il titolo sotto la barra del menu
+        const yOffset = -100; 
+        const y = headers[index].getBoundingClientRect().top + window.pageYOffset + yOffset;
 
-        // Incrementa l'indice o ricomincia da capo
+        window.scrollTo({top: y, behavior: 'smooth'});
+
+        console.log("Scorro su: " + headers[index].innerText);
         index = (index + 1) % headers.length;
-    }, 5000); // 5000 millisecondi = 5 secondi
+    }, 5000); 
 })();
     </script>
 </body>
