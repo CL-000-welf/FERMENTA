@@ -1058,5 +1058,15 @@
             document.getElementById('year-range').textContent = `2025-${currentYear}`;
         }
     </script>
+   <!-- Autoscroll -->
+    <script> function autoScroll() {
+          window.scrollBy(0, 1);
+          if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+          window.scrollTo(0, 0);
+          }
+          setTimeout(autoScroll, 20); // Regola il numero per la velocità
+          }
+          autoScroll();
+    </script>
 </body>
 </html>
